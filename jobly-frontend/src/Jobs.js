@@ -1,11 +1,21 @@
-import React from "react"
+import React from "react";
+import JobCard from "./JobCard";
 
 
-/** Component that renders a list of Jobs  
+/** Component that renders a list of JobCards
  */
-function Jobs(){
-    return(
-        <h1>YOU GOT TO Jobs!</h1>
+function Jobs({ jobs }) {
+
+    return (
+      <ul>
+        {jobs.map(job => (
+          <JobCard
+            id={job.id}
+            title={job.title}
+            salary={job.salary}
+            equity={job.equity}
+            />))}
+      </ul>
     )
 }
 

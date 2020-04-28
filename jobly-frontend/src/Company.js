@@ -1,42 +1,44 @@
 import React from "react";
-import JoblyApi from "./JoblyAPI";
-import CompanyCard from "./CompanyCard";
+import { getCompany } from "./JoblyAPI";
 
+// Company is the company details we see from companies url that is rendered above the list of job cards for that specific company
 
-/** Component that renders a list of all CompanyCards
- * also sorts for companies that match search query.
- */
+//   ├─┬ Company        : detail page for a company
+//   │ └── JobCard      : info about job (here, rendered as part of company)
+function Company() {
+  // find one company backend route returns obj of company data, including key of jobs with value of an array of all dob data.
 
-// NOTE/TODO: Scenario - user enters in URL to "companies/not-a-real-thing" and Rithm demo app
-// renders "loading...". Joel said it was because the app wasn't handling errors for unfound imaginary companies
-// If time, work out the solution.
+  //make backend fetch for single company
 
+  // map over job data and render below
+  // Need to revist
 
-function Companies() {
-
-  // fetch all companies from backend
-  // CURRENTLY RETURNING A PROMISE- so map and render not working
-    // WHAT'S NEXT?
-    //do we need to add company state here?
-    // should we implement a useEffect function to map companies once the companies state is updated?
-
-  let companies = JoblyApi.getAllCompanies();
-  console.log(companies);
-
-  return (
-    <ul>
-      {companies.map(company => (
-        <CompanyCard
-          handle={company.handle}
-          name={company.name}
-          description={company.description}
-          logoUrl={company.logo_url}
-        />))}
-    </ul>
-  )
 }
 
-export default Companies;
+export default Company;
+
+    // render Jobs company={company}
+      // in jobs component make api call
+      //in jobs component render map of jobCards for company
+
+
+// App
+// ├── Navigation
+// └─┬ Routes
+//   ├─┬ Companies
+//   │ ├── CompanyCard
+//   │ └── Search
+//   ├─┬ Company
+//   │ └── JobCard
+//   ├── Home
+//   ├─┬ Jobs
+//   │ │ └── JobCard
+//   │ └── Search
+//   ├─┬ Login
+//   │ └── Alert
+//   ├── PrivateRoute  (don't worry about this for now)
+//   └─┬ Profile
+//     └── Alert
 
 // Our component hierarchy, showing which component gets rendered by a parent
 // component. There are some components (JobCard, Search, Alert) which appear

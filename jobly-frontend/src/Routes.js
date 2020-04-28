@@ -5,7 +5,7 @@ import Jobs from "./Jobs";
 import Profile from "./Profile";
 import Home from "./Home";
 import Login from "./Login";
-import CompanyCard from "./CompanyCard";
+import Company from "./Company";
 
 /**  Routes function renders Components by assigned URL path */
 function Routes() {
@@ -14,7 +14,7 @@ function Routes() {
         <Switch>
             <Route exact path="/"><Home /></Route>
             <Route exact path="/companies"><Companies /></Route>
-            <Route exact path="/companies/:companyName"><CompanyCard /></Route>
+            <Route exact path="/companies/:companyName"><Company /></Route>
 
             <Route exact path="/jobs"><Jobs /></Route>
 
