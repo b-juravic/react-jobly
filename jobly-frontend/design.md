@@ -87,4 +87,21 @@ NotFound.js
 
 
 
+for JOBLY API
+Company — auth on backend, do we need to do anything? send token?
+	X getAllCompanies
+	X postNewCompany - post
+	updateCompany - patchiest
+	deleteCompany - delete
 
+Jobs
+	getAllJobs
+	getOneJob -
+	postNewJob - post
+	updateJob - patch
+	deleteJob - delete
+	applyToJob - post
+
+Users
+	updateUser - patch  (for updateUserForm)
+	
