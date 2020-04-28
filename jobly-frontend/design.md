@@ -85,14 +85,15 @@ NotFound.js
 
 
 
-
+**TODO**
+We'll need to think about OBJ format for API helpers that have an id/handle & data (updates) && _token
 
 for JOBLY API
 Company — auth on backend, do we need to do anything? send token?
 	X getAllCompanies
 	X postNewCompany - post
-	updateCompany - patchiest
-	deleteCompany - delete
+	X updateCompany - patch
+	X deleteCompany - delete
 
 Jobs
 	getAllJobs
@@ -105,3 +106,6 @@ Jobs
 Users
 	updateUser - patch  (for updateUserForm)
 	
+
+TODO:
+  maintain handle/id for accessing company/job info (as our key?)
