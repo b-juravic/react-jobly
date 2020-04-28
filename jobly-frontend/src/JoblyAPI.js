@@ -24,6 +24,10 @@ class JoblyApi {
             throw Array.isArray(message) ? message : [message];
         }
     }
+/**
+ * NOTE: also made route requests for routes that require Admin authentication
+ */
+
 
     /**
      * Companies Requests
@@ -95,7 +99,6 @@ class JoblyApi {
         return res.message;
     }
 
-    // NEED TO CHECK OVER
     // sends POST request to apply to a job
     static async applyToJob(id) {
         let res = await this.request(`jobs/${id}/apply`, newJobData, 'post');
@@ -104,7 +107,7 @@ class JoblyApi {
 
     /**
      * Users Routes
-     * creates static functions for making API requests to users routes
+     * static functionfor making API requests to users routes
      */
 
     // sends PATCH request to update user information at users/username

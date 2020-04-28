@@ -13,8 +13,6 @@ function App() {
           <Routes />
         </div>
       </BrowserRouter>
-
-
     </div>
   );
 }
