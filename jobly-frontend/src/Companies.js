@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import JoblyApi from "./JoblyAPI";
 import CompanyCard from "./CompanyCard";
+import SearchBar from "./SearchBar";
 
 
 /** Component that renders a list of all CompanyCards
@@ -16,6 +17,13 @@ function Companies() {
 
   const [companyList, setCompanyList] = useState([])
 
+  //create function to filter through companyList for company.name that contains searchTerm
+  //pass to SearchBar
+  function filterCompanies(searchTerm){
+    const filteredCompanies = companyList.filter(company => company.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    setCompanyList(filteredCompanies);
+  }
+
 
   useEffect( () => {
     async function fetchCompanies(){
@@ -27,7 +35,8 @@ function Companies() {
   )
 
   return (
-
+    <div>
+    <SearchBar filter={filterCompanies}/>
     <ul>
       {companyList.map(company => (
         <CompanyCard
@@ -37,6 +46,7 @@ function Companies() {
           logoUrl={company.logo_url}
         />))}
     </ul>
+    </div>
   )
 }
 
