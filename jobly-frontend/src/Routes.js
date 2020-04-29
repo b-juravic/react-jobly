@@ -14,7 +14,7 @@ function Routes() {
         <Switch>
             <Route exact path="/"><Home /></Route>
             <Route exact path="/companies"><Companies /></Route>
-            <Route exact path="/companies/:companyName"><Company /></Route>
+            <Route exact path="/companies/:handle"><Company /></Route>
 
             <Route exact path="/jobs"><Jobs /></Route>
 
