@@ -13,10 +13,10 @@ import CompanyCard from "./CompanyCard";
 
 
 function Companies() {
-  
+
   const [companyList, setCompanyList] = useState([])
 
-  
+
   useEffect( () => {
     async function fetchCompanies(){
       let newCompanies = await JoblyApi.getAllCompanies();
@@ -25,7 +25,6 @@ function Companies() {
     fetchCompanies();
   },[]
   )
-
 
   return (
 

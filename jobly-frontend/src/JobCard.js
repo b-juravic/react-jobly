@@ -2,14 +2,14 @@ import React from "react"
 
 
 /** Component renders detail for a single job */
-function JobCard({ id, title, salary, equity, logo }) {
+function JobCard({ title, salary, equity }) {
 
     return (
-      <li key={id}>
+      <li>
         <h5>{title}</h5>
         <p>{salary}</p>
         <p>{equity}</p>
-        <a>Apply</a>
+        {/* <a>Apply</a> */}
       </li>
     );
 }

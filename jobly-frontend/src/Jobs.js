@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import JobCard from "./JobCard";
 
 
@@ -7,15 +7,18 @@ import JobCard from "./JobCard";
 function Jobs({ jobs }) {
 
     return (
-      <ul>
-        {jobs.map(job => (
-          <JobCard
-            id={job.id}
-            title={job.title}
-            salary={job.salary}
-            equity={job.equity}
-            />))}
-      </ul>
+      <div>
+      <h1>Jobs for company:</h1>
+        <ul>
+          {jobs.map(job => (
+            <JobCard
+              key={job.id}
+              title={job.title}
+              salary={job.salary}
+              equity={job.equity}
+              />))}
+        </ul>
+      </div>
     )
 }
 
