@@ -1,24 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import JoblyApi from "./JoblyAPI";
-import Jobs from "./Jobs";
+import JobCard from "./JobCard";
 
-// Company is the company details we see from companies url that is rendered above the list of job cards for that specific company
 
+/**
+ * Renders Detal about a specific company along with JobCards for that company's jobs
+ */
 function Company() {
-  // company is an object of company data in cluding a key of jobs
-  // jobs value is an array of job objects {jobs: {id: id, title: title, salary: salary, equity: equity}...}
+  /**company State is an object containing company data:
+   * {name: name,
+   * description: desc,
+   * jobs: [{id: id, title: title, salary: salary, equity: equity}...]}
+   */
   const [company, setCompany] = useState({jobs: []});
   const { handle } = useParams();
 
-  //make backend fetch for single company
   useEffect(() => {
     async function fetchCompany() {
       let newCompany = await JoblyApi.getCompany(handle);
       setCompany(newCompany);
     }
     fetchCompany();
-  }, []);
+  }, [/**fetch single company from backend upon mount */]);
 
   return (
     <div>
@@ -27,7 +31,15 @@ function Company() {
         <p>{company.description}</p>
       </div>
       <div>
-        <Jobs jobs={company.jobs}/>
+        <ul>
+        {company.jobs.map(job => (
+          <JobCard
+            key={job.handle}
+            title={job.title}
+            salary={job.salary}
+            equity={job.equity}
+          />))}
+      </ul>
       </div>
     </div>
   )

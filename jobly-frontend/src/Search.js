@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 
-
 /**
- * Creates API request for the parent that passes down their
- * related API request function and then passes back up to parent
- * to make API call
+ * Renders a search form, stores search form input
+ * and invokes filter function (passed down as prop) with search input data.
  */
 function Search({ filter }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,8 +15,6 @@ function Search({ filter }) {
     evt.preventDefault();
     filter(searchTerm);
   }
-
-  // use filter() to build the API request to send back to parent
 
   return (
     <div>
@@ -34,8 +30,7 @@ function Search({ filter }) {
         <button>Submit</button>
       </form>
     </div>
-  )
-
+  );
 }
 
 export default Search;

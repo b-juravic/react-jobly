@@ -1,25 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import JobCard from "./JobCard";
 import Search from "./Search";
+import JoblyApi from "./JoblyAPI";
 
 
-
-/** Component that renders a list of JobCards
+/** Renders a list of all JobCards and a search box
  */
-function Jobs({ jobs }) {
+function Jobs() {
+  const [jobList, setJobList] = useState([])
 
-  let filterJobs = (searchTerm) => {
-    const filteredJobs = jobs.filter(job => job.title.toLowerCase().includes(searchTerm.toLowerCase()))
-    return filteredJobs
+  // Filters job list if search term entered into search box
+  async function filterJobs(searchTerm) {
+    const req = await JoblyApi.getAllJobs(searchTerm);
+    setJobList([...req]);
   }
 
-  
-  // const filterJobs = !filteredJobs ? jobs : filteredJobs
-  let jobList = (filterJobs.length > 0) ? filterJobs : jobs;
+  useEffect(() => {
+    async function fetchJobs() {
+      let newJobs = await JoblyApi.getAllJobs();
+      setJobList([...newJobs]);
+    }
+    fetchJobs();
+  }, [/**fetch all jobs from backend upon mount */]
+  )
 
   return (
     <div>
-      <h1>Jobs for company:</h1>
       <Search filter={filterJobs} />
       <ul>
         {jobList.map(job => (
@@ -35,6 +41,3 @@ function Jobs({ jobs }) {
 }
 
 export default Jobs;
-
-// const taco = filteredJobs === false ? jobs : filteredJobs
-// let jobList = (filteredJobs.length > 0) ? filteredJobs : jobs;

@@ -46,7 +46,6 @@ class JoblyApi {
   // sends request for list of all companies
   static async getAllCompanies(searchTerm) {
     let res = !searchTerm ? await this.request(`companies`) : await this.request('companies', {search: searchTerm})
-    console.log(`\n\n\n The value of res is `, res);
     return res.companies;
   }
 
@@ -80,8 +79,8 @@ class JoblyApi {
   }
 
   // sends request for list of all jobs
-  static async getAllJobs() {
-    let res = await this.request(`jobs`);
+  static async getAllJobs(searchTerm) {
+    let res = !searchTerm ? await this.request(`jobs`) : await this.request('jobs', {search: searchTerm})
     return res.jobs
   }
 
