@@ -118,20 +118,20 @@ class JoblyApi {
     let res = await this.request(`users/${username}`, userUpdateData, 'patch');
     return res.user;
   }
+
+   /**
+   * Auth Routes
+   * static functionfor making API requests to auth routes
+   */
+
+  static async logIn(username, password) {
+    let res = await this.request(`login`, {username, password}, 'post');
+    console.log(`\n\n\n The value of res from JoblyAPI is `, res);
+    
+    // return res.message;
+    return res;
+  }
 }
 
 
 export default JoblyApi;
-// {
-//   getCompany,
-//   getAllCompanies,
-//   postNewCompany,
-//   updateCompany,
-//   deleteCompany,
-//   getJob,
-//   getAllJobs,
-//   postNewJob,
-//   updateJob,
-//   deleteJob,
-//   updateUser
-// };

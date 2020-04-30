@@ -145,3 +145,14 @@ Jobs
   |_Search - gets function from Jobs as prop so that on Submit invoke function
 
   Search - take searchTerm and put into API call send it back to Parent to request
+
+
+Step 6 AUths
+  route to user login @ /login
+    store token in LocalStorage
+  @NavBar
+   'LogIn' if not logged in && LogIn Form    
+      @ Homepage
+   else 'LogOut' 
+
+  ALSO do Registration

@@ -35,7 +35,7 @@ router.get("/:username", authRequired, async function(req, res, next) {
 });
 
 /** POST / {userdata}  => {token: token} */
-
+// creates New User at registration
 router.post("/", async function(req, res, next) {
   try {
     delete req.body._token;
