@@ -21,10 +21,8 @@ function Companies() {
   //pass to SearchBar
   async function filterCompanies(searchTerm) {
     const req = await JoblyApi.getAllCompanies(searchTerm);
-    console.log(`\n\n\n The value of companyList FROM FILTER is `, companyList);
     setCompanyList(companyList => [...req]);
   }
-  console.log(`\n\n\n The value of companyList FROM COMPANIES is `, companyList);
 
   useEffect(() => {
     async function fetchCompanies() {
