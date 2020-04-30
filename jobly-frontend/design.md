@@ -148,8 +148,8 @@ Jobs
 
 
 Step 6 AUths
-  route to user login @ /login
-    store token in LocalStorage
+  X route to user login @ /login
+  X  store token in LocalStorage
   @NavBar
    'LogIn' if not logged in && LogIn Form    
       @ Homepage
