@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import JoblyApi from "./JoblyAPI";
 import CompanyCard from "./CompanyCard";
-import SearchBar from "./SearchBar";
+import Search from "./Search";
 
 
 /** Component that renders a list of all CompanyCards
@@ -19,33 +19,34 @@ function Companies() {
 
   //create function to filter through companyList for company.name that contains searchTerm
   //pass to SearchBar
-  function filterCompanies(searchTerm){
-    const filteredCompanies = companyList.filter(company => company.name.toLowerCase().includes(searchTerm.toLowerCase()))
-    setCompanyList(filteredCompanies);
+  async function filterCompanies(searchTerm) {
+    const req = await JoblyApi.getAllCompanies(searchTerm);
+    console.log(`\n\n\n The value of companyList FROM FILTER is `, companyList);
+    setCompanyList(companyList => [...req]);
   }
+  console.log(`\n\n\n The value of companyList FROM COMPANIES is `, companyList);
 
-
-  useEffect( () => {
-    async function fetchCompanies(){
+  useEffect(() => {
+    async function fetchCompanies() {
       let newCompanies = await JoblyApi.getAllCompanies();
-      setCompanyList( companyList => [...companyList, ...newCompanies]);
+      setCompanyList(companyList => [...companyList, ...newCompanies]);
     }
     fetchCompanies();
-  },[]
+  }, []
   )
 
   return (
     <div>
-    <SearchBar filter={filterCompanies}/>
-    <ul>
-      {companyList.map(company => (
-        <CompanyCard
-          handle={company.handle}
-          name={company.name}
-          description={company.description}
-          logoUrl={company.logo_url}
-        />))}
-    </ul>
+      <Search filter={filterCompanies} />
+      <ul>
+        {companyList.map(company => (
+          <CompanyCard
+            handle={company.handle}
+            name={company.name}
+            description={company.description}
+            logoUrl={company.logo_url}
+          />))}
+      </ul>
     </div>
   )
 }

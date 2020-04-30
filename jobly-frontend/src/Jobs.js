@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import JobCard from "./JobCard";
-import SearchBar from "./SearchBar";
+import Search from "./Search";
 
 
 
@@ -20,7 +20,7 @@ function Jobs({ jobs }) {
   return (
     <div>
       <h1>Jobs for company:</h1>
-      <SearchBar filter={filterJobs} />
+      <Search filter={filterJobs} />
       <ul>
         {jobList.map(job => (
           <JobCard

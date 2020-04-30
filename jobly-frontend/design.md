@@ -136,3 +136,12 @@ TODO:
 // Footnote about "Login": this is the combined login/register form; we built
 // this as one component, since they are similar and share some features. Another
 // good option would be having separate components for login and register forms.
+
+use getAllCompanies/Jobs(params go here) in Search for Companies
+
+
+
+Jobs
+  |_Search - gets function from Jobs as prop so that on Submit invoke function
+
+  Search - take searchTerm and put into API call send it back to Parent to request
