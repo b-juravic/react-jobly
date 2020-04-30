@@ -1,10 +1,12 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
+import {useHistory} from "react-router-dom";
 import JoblyApi from "./JoblyAPI";
 
 
 /** Component that allows users to Login */
 function Login() {
   const [formData, setFormData] = useState({ username: "", password: "" });
+  const history = useHistory();
 
   const handleChange = evt => {
     const { name, value } = evt.target;
@@ -25,6 +27,7 @@ function Login() {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     logInUser(formData.username, formData.password);
+    history.push("/jobs");
   }
 
 

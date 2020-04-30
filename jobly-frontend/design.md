@@ -151,8 +151,10 @@ Step 6 AUths
   X route to user login @ /login
   X  store token in LocalStorage
   @NavBar
-   'LogIn' if not logged in && LogIn Form    
-      @ Homepage
+   **'LogIn' if not logged in && LogIn Form @ Homepage
    else 'LogOut' 
 
   ALSO do Registration
+
+Probs
+when logging in and redirected "Log-in" doesn't change
