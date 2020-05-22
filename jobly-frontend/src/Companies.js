@@ -9,6 +9,7 @@ import Search from "./Search";
 // If time, work out the solution.
 
 /**
+ * TODO: Add loading spinner
  * Renders a list of all CompanyCards and a search box
  */
 function Companies() {
@@ -16,7 +17,6 @@ function Companies() {
   const [companyList, setCompanyList] = useState([])
 
   // Filters company list if search term entered into search box
-  // look into utilizing a useCallback here...
   async function filterCompanies(searchTerm) {
     const req = await JoblyApi.getAllCompanies(searchTerm);
     setCompanyList([...req]);

@@ -1,13 +1,11 @@
 import axios from "axios";
 
+//TODO: add try/catch to each asyn function
+// when catch error make array of errors if not already
+
 class JoblyApi {
   static async request(endpoint, paramsOrData = {}, verb = "get") {
     paramsOrData._token = localStorage.getItem("_token");
-    // ( 
-    //   // for now, hardcode token for "testing", retained in case of emergency
-    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
-    //   "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
-    //   "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U");
 
     console.debug("API Call:", endpoint, paramsOrData, verb);
 
@@ -115,6 +113,13 @@ class JoblyApi {
    * static functionfor making API requests to users routes
    */
 
+   // get user data by username [get]
+  static async getUserInfo(username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
+
+
   // sends PATCH request to update user information at users/username
   static async updateUser(userUpdateData, username) {
     let res = await this.request(`users/${username}`, userUpdateData, 'patch');
@@ -128,9 +133,6 @@ class JoblyApi {
 
   static async logIn(username, password) {
     let res = await this.request(`login`, {username, password}, 'post');
-    console.log(`\n\n\n The value of res from JoblyAPI is `, res);
-    
-    // return res.message;
     return res;
   }
 }

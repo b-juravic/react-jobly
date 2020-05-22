@@ -5,7 +5,7 @@ import JobCard from "./JobCard";
 
 
 /**
- * Renders Detal about a specific company along with JobCards for that company's jobs
+ * Renders Detail about a specific company along with JobCards for that company's jobs
  */
 function Company() {
   /**company State is an object containing company data:
@@ -34,7 +34,7 @@ function Company() {
         <ul>
         {company.jobs.map(job => (
           <JobCard
-            key={job.handle}
+            key={job.id}
             title={job.title}
             salary={job.salary}
             equity={job.equity}

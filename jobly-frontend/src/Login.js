@@ -1,14 +1,29 @@
-import React, { useState } from "react";
-import {useHistory} from "react-router-dom";
-import JoblyApi from "./JoblyAPI";
+import React, { useState, useContext } from "react";
+import { Redirect, useHistory } from "react-router-dom";
+import "./Login.css";
+import UserDataContext from "./UserDataContext";
 
+/**
+ * TODO: map over errors to display for user
+ * TODO: require input from required fields
+ * TODO: define signUpUser function
+ * TODO: in handleSubmit, determine which function to invoke: logIn or signUpUser
+ */
 
-/** Component that allows users to Login */
+/*
+ * Renders Login or Registration form
+ *  * Connects to context:
+ * -- loginUser: function to update user data in state of app/context
+ */
 function Login() {
   const [formData, setFormData] = useState({ username: "", password: "" });
+  const [signUp, setSignUp] = useState(false);
+
+  const { loginUser } = useContext(UserDataContext);
   const history = useHistory();
 
-  const handleChange = evt => {
+
+  function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(fData => ({
       ...fData,
@@ -16,46 +31,80 @@ function Login() {
     }));
   }
 
-  function logInUser(username, password) {
-    async function logInreq() {
-      const res = await JoblyApi.logIn(username, password);
-      localStorage.setItem("_token", res.token);
-    }
-    logInreq();
-  }
-
-  const handleSubmit = (evt) => {
+  // await loginUser so authenticated when redirected to jobs page
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    logInUser(formData.username, formData.password);
+    await loginUser(formData.username, formData.password);
+    // successful login - save to browser history and redirect to /jobs path
     history.push("/jobs");
   }
 
+  function displayLoginOrSignUp(evt) {
+    const { name } = evt.target;
+    (name === "signUp")
+      ? setSignUp(true)
+      : setSignUp(false);
+  }
 
   return (
     <div>
-      <h1>Login</h1>
+      <button
+        name="login"
+        type="button"
+        onClick={displayLoginOrSignUp}>
+        Login
+      </button>
+      <button
+        name="signUp"
+        type="button"
+        onClick={displayLoginOrSignUp}>
+        Sign Up
+      </button>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input type="text"
           id="username"
           name="username"
           value={formData.username}
-          placeholder=""
           onChange={handleChange}>
         </input>
-
         <label htmlFor="password">Password</label>
         <input type="text"
           id="password"
           name="password"
           value={formData.password}
-          placeholder=""
           onChange={handleChange}>
         </input>
+        {/* signUp fields only render if signUp state === true*/}
+        {signUp ?
+          <div id="sign-up">
+            <label htmlFor="firstName">First Name</label>
+            <input type="text"
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}>
+            </input>
+            <label htmlFor="lastName">Last Name</label>
+            <input type="text"
+              id="lastName"
+              name="lasttName"
+              value={formData.lastName}
+              onChange={handleChange}>
+            </input>
+            <label htmlFor="email">Email</label>
+            <input type="text"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}>
+            </input>
+          </div>
+          : null}
         <button>Submit</button>
       </form>
     </div>
-  )
+  );
 }
 
 export default Login;

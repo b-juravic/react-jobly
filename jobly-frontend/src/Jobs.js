@@ -4,7 +4,9 @@ import Search from "./Search";
 import JoblyApi from "./JoblyAPI";
 
 
-/** Renders a list of all JobCards and a search box
+/**
+ * TODO: Add loading spinner
+ * Renders a list of all JobCards and a search box
  */
 function Jobs() {
   const [jobList, setJobList] = useState([])

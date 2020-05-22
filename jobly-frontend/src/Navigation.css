@@ -1,0 +1,24 @@
+nav {
+  background-color: white;
+  color: #0091ff;
+  text-align: right;
+  border-color: white;
+  border-bottom: #e6e6e6;
+  border-style: solid;
+  padding-top: 5%;
+}
+
+nav a {
+  text-decoration: none;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+nav a:visited {
+  color: #0091ff;
+}
+
+nav a:hover {
+  text-decoration: none;
+  color: #005493
+}
