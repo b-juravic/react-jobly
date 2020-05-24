@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Search.css";
 
 /**
  * Renders a search form, stores search form input
@@ -17,7 +18,7 @@ function Search({ filter }) {
   }
 
   return (
-    <div>
+    <div className="Search">
       <form onSubmit={handleSubmit}>
         <label htmlFor="search"></label>
         <input type="text"

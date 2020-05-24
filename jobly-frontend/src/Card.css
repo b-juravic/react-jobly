@@ -1,0 +1,12 @@
+.card {
+  margin: 3vh 20vw;
+}
+
+.card-body {
+  color: #404040;
+  background-color: #f7f7f7;
+}
+
+.CompanyCard a:hover{
+  text-decoration: none;
+}

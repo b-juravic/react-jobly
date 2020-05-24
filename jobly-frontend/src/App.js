@@ -76,7 +76,7 @@ function App() {
 
   return (
     <UserDataContext.Provider value={{ loggedInUserData, loginUser, logoutUser }}>
-      <div>
+      <div className="App">
         <BrowserRouter>
           <Navigation />
           <div>

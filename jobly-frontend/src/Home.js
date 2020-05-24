@@ -1,13 +1,7 @@
 import React, { useContext } from "react"
 import { Link } from "react-router-dom";
 import UserDataContext from "./UserDataContext";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardText,
-  CardLink
-} from "reactstrap";
+import "./Home.css";
 
 function Home() {
   const { loggedInUserData } = useContext(UserDataContext);
@@ -15,7 +9,7 @@ function Home() {
   console.log("home component- userdata", loggedInUserData);
 
   return (
-    <div>
+    <div className="Home container-fluid">
       <h1>Jobly</h1>
       <p>All the jobs in one, convenient place.</p>
       {loggedInUserData._token

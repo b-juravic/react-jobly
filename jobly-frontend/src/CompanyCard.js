@@ -1,6 +1,6 @@
 import React from "react"
 import {Link} from "react-router-dom";
-
+import "./Card.css";
 
 /** Component renders detail for a single company */
 function CompanyCard({handle, name, description, logoUrl }) {
@@ -10,8 +10,8 @@ function CompanyCard({handle, name, description, logoUrl }) {
   // TODO: make sure logos render, just showing alt 4/29
 
   return (
-    <li>
-      <Link to={`companies/${handle}`}>
+    <li className="CompanyCard card">
+      <Link className="card-body" to={`companies/${handle}`}>
         <h5>{name}</h5>
         <p>{description}</p>
         <img src={logoUrl} alt={`${name} logo`} />
