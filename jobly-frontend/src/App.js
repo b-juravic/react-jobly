@@ -79,7 +79,7 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Navigation />
-          <div>
+          <div className="container-fluid">
             <Routes />
           </div>
         </BrowserRouter>

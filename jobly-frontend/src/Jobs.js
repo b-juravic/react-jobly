@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import JobCard from "./JobCard";
 import Search from "./Search";
 import JoblyApi from "./JoblyAPI";
-
+import "./Jobs.css";
 
 /**
  * TODO: Add loading spinner
@@ -27,9 +27,9 @@ function Jobs() {
   )
 
   return (
-    <div>
+    <div className="Jobs col-md-8 offset-md-2">
       <Search filter={filterJobs} />
-      <ul>
+      <ul className="Jobs-container">
         {jobList.map(job => (
           <JobCard
             key={job.id}

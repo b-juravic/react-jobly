@@ -9,11 +9,11 @@ function Home() {
   console.log("home component- userdata", loggedInUserData);
 
   return (
-    <div className="Home container-fluid">
-      <h1>Jobly</h1>
+    <div className="Home">
+      <h1 className="font-weight-bold">Jobly</h1>
       <p>All the jobs in one, convenient place.</p>
       {loggedInUserData._token
-        ? <h3>Welcome Back!</h3>
+        ? <h2>Welcome Back!</h2>
         : <Link to="/login">Log In</Link>}
     </div>
     );

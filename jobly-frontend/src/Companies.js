@@ -32,7 +32,7 @@ function Companies() {
   )
 
   return (
-    <div className="Companies">
+    <div className="Companies col-md-8 offset-md-2">
       <Search filter={filterCompanies} />
       <ul className="Companies-container">
         {companyList.map(company => (
