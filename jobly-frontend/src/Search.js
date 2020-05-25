@@ -28,7 +28,7 @@ function Search({ filter }) {
           placeholder="Enter search term..."
           onChange={handleChange}
         />
-        <button className="btn btn-lg btn-primary">Submit</button>
+        <button className="btn btn-lg btn-primary">Search</button>
       </form>
     </div>
 

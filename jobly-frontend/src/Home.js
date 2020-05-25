@@ -10,11 +10,11 @@ function Home() {
 
   return (
     <div className="Home">
-      <h1 className="font-weight-bold">Jobly</h1>
-      <p>All the jobs in one, convenient place.</p>
+      <h1 className="display-2">Jobly</h1>
+      <p className="lead">All the jobs in one, convenient place.</p>
       {loggedInUserData._token
         ? <h2>Welcome Back!</h2>
-        : <Link to="/login">Log In</Link>}
+        : <Link className="btn btn-primary btn-md font-weight-bold" to="/login">Log In</Link>}
     </div>
     );
 }

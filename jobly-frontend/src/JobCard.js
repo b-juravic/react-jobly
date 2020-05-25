@@ -9,7 +9,7 @@ function JobCard({ title, salary, equity }) {
       <div className="card-body">
         <h6 className="card-title">{title}</h6>
         <div>Salary: ${salary}</div>
-        <div>Equty: {equity}</div>
+        <div>Equity: {equity}</div>
         <button
           className="btn btn-md btn-danger float-right font-weight-bold text-uppercase"
         >Apply
