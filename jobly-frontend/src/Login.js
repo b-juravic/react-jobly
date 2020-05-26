@@ -35,6 +35,7 @@ function Login() {
   async function handleSubmit(evt) {
     evt.preventDefault();
     await loginUser(formData.username, formData.password);
+
     // successful login - save to browser history and redirect to /jobs path
     history.push("/jobs");
   }

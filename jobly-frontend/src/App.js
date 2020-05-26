@@ -8,7 +8,7 @@ import UserDataContext from "./UserDataContext";
 import decode from "jwt-decode";
 
 /**
- * TODO: Need Not authorized component- if user navigates to jobs or companies from url bar when not logged in
+ * TODO: Need Not authorized component? if user navigates to jobs or companies from url bar when not logged in
  * TODO: Need not found component= if user navigates to noexistent path
  * TODO: Need Handle errors
  * TODO: clean up state???
@@ -18,9 +18,11 @@ function App() {
   let tokenVal = localStorage._token || null;
   const [token, setToken] = useState(tokenVal);
 
-  const USER_INITIAL_STATE = { _token: token,
-                          userInfo: {},
-                          loggedOut: true}
+  const USER_INITIAL_STATE = {
+    _token: token,
+    userInfo: {},
+    loggedOut: true
+  }
   const [loggedInUserData, setLoggedInUserData] = useState(USER_INITIAL_STATE);
 
 
@@ -52,12 +54,12 @@ function App() {
   }
 
   // get user data from backend API
-   async function getUserData(username) {
+  async function getUserData(username) {
     try {
       const res = await JoblyApi.getUserInfo(username);
       setLoggedInUserData(state => ({
         ...state,
-        userInfo: {...res},
+        userInfo: { ...res },
         loggedOut: false
       }));
     }
@@ -72,7 +74,7 @@ function App() {
       let { username } = decode(localStorage._token);
       getUserData(username);
     }
-  }, [])
+  })
 
   return (
     <UserDataContext.Provider value={{ loggedInUserData, loginUser, logoutUser }}>
