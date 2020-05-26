@@ -1,0 +1,14 @@
+.Jobs {
+  padding-top: 8vh;
+}
+
+.Jobs-container {
+  padding-top: 1vh;
+  margin-bottom: 3vh;
+  text-align: center;
+}
+
+button {
+  border-bottom-left-radius: .25rem !important;
+  border-top-left-radius: .25rem !important;
+}

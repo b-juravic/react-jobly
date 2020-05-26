@@ -1,5 +1,14 @@
+body {
+  padding-top: 0px;
+}
+
 .App {
-  text-align: center;
+  height: 100vh;
+  color: #404040;
+}
+
+.container-fluid {
+  padding-top: 5vh;
 }
 
 .App-logo {

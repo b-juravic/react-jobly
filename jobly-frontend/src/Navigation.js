@@ -13,38 +13,55 @@ function Navigation() {
 
   if (!loggedInUserData._token) {
     return (
-      <nav className="Navigation">
-        <NavLink exact to="/">
+      <nav className="Navigation navbar navbar-expand-md">
+        <NavLink className="navbar-brand" exact to="/">
           Jobly
-      </NavLink>
-        <NavLink
-          exact to="/login">
-          Login
-      </NavLink>
+        </NavLink>
+        <ul className="navbar-nav ml-auto">
+          <li>
+            <NavLink
+              className="nav-item"
+              exact to="/login">
+              Login
+        </NavLink>
+          </li>
+        </ul>
       </nav>
     );
   }
   else {
     return (
-      <nav className="Navigation">
-        <NavLink exact to="/">
+      <nav className="Navigation navbar navbar-expand-md">
+        <NavLink className="navbar-brand" exact to="/">
           Jobly
-      </NavLink>
-        <NavLink exact to="/companies">
-          Companies
-      </NavLink>
-        <NavLink exact to="/jobs">
-          Jobs
-      </NavLink>
-        <NavLink exact to="/profile">
-          Profile
-      </NavLink>
-        <NavLink
-          exact to="/"
-          onClick={logoutUser}
-        >
-          Logout
-      </NavLink>
+        </NavLink>
+
+        <ul className="navbar-nav ml-auto">
+          <li>
+            <NavLink className="nav-item mr-4" exact to="/companies">
+              Companies
+          </NavLink>
+          </li>
+          <li>
+            <NavLink className="nav-item mr-4" exact to="/jobs">
+              Jobs
+          </NavLink>
+          </li>
+          <li>
+            <NavLink className="nav-item mr-4" exact to="/profile">
+              Profile
+          </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className="nav-item mr-4"
+              exact to="/"
+              onClick={logoutUser}
+            >
+              Logout
+          </NavLink>
+          </li>
+        </ul>
       </nav>
     );
   }

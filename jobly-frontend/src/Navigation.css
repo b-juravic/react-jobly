@@ -1,11 +1,7 @@
 nav {
   background-color: white;
   color: #0091ff;
-  text-align: right;
-  border-color: white;
-  border-bottom: #e6e6e6;
-  border-style: solid;
-  padding-top: 5%;
+  border-bottom: 2px solid #d9d9d9;
 }
 
 nav a {
@@ -22,3 +18,4 @@ nav a:hover {
   text-decoration: none;
   color: #005493
 }
+

@@ -1,7 +1,20 @@
-.toggle-display-content {
-  display:none;
+form {
+  color: black;
 }
 
-.toggle-display-content.visible {
-  display: block;
+.btn-login {
+  border-bottom-right-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: .25rem !important;
+}
+
+.btn-signup {
+  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.btn-submit {
+  border-bottom-left-radius: .25rem !important;
+  border-top-left-radius: .25rem !important;
 }
