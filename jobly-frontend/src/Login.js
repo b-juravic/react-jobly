@@ -6,22 +6,28 @@ import UserDataContext from "./UserDataContext";
 /**
  * TODO: map over errors to display for user
  * TODO: require input from required fields
- * TODO: define signUpUser function
- * TODO: in handleSubmit, determine which function to invoke: logIn or signUpUser
  */
+
+ const LOGIN_INITIAL_STATE = { username: "", password: "" };
+ const SIGNUP_INITIAL_STATE = { username: "", password: "", firstName: "", lastName: "", email: ""};
 
 /*
  * Renders Login or Registration form
  *  * Connects to context:
- * -- loginUser: function to update user data in state of app/context
+ * -- loginUser: function to login user
+ * -- registerUser: function to register new user
+ * -- loggedInUserData.loggedOut to determine login status of user
  */
 function Login() {
-  const [formData, setFormData] = useState({ username: "", password: "" });
   const [signUp, setSignUp] = useState(false);
 
-  const { loginUser } = useContext(UserDataContext);
+  const [formData, setFormData] = useState(LOGIN_INITIAL_STATE);
+
+  const { loginUser, registerUser, loggedInUserData } = useContext(UserDataContext);
   const history = useHistory();
 
+  // if user currently logged in, redirect to home page
+  if (loggedInUserData.loggedOut === false) return <Redirect to="/"/>
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -31,10 +37,12 @@ function Login() {
     }));
   }
 
-  // await loginUser so authenticated when redirected to jobs page
+  // await loginUser or registerUser so authenticated when redirected to jobs page
   async function handleSubmit(evt) {
     evt.preventDefault();
-    await loginUser(formData.username, formData.password);
+    signUp === true
+      ? await registerUser(formData)
+      : await loginUser(formData.username, formData.password);
 
     // successful login - save to browser history and redirect to /jobs path
     history.push("/jobs");
@@ -42,9 +50,15 @@ function Login() {
 
   function displayLoginOrSignUp(evt) {
     const { name } = evt.target;
-    (name === "signUp")
-      ? setSignUp(true)
-      : setSignUp(false);
+
+    if (name === "signUp") {
+      setSignUp(true);
+      setFormData(SIGNUP_INITIAL_STATE);
+    }
+    else {
+      setSignUp(false);
+      setFormData(LOGIN_INITIAL_STATE);
+    }
   }
 
   return (
@@ -107,7 +121,7 @@ function Login() {
                     className="form-control"
                     type="text"
                     id="lastName"
-                    name="lasttName"
+                    name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}>
                   </input>

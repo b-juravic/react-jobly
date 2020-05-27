@@ -11,9 +11,7 @@ import decode from "jwt-decode";
  * TODO: Need Not authorized component? if user navigates to jobs or companies from url bar when not logged in
  * TODO: Need not found component= if user navigates to noexistent path
  * TODO: Need Handle errors
- * TODO: clean up state???
  */
-
 function App() {
   let tokenVal = localStorage._token || null;
   const [token, setToken] = useState(tokenVal);
@@ -24,10 +22,6 @@ function App() {
     loggedOut: true
   }
   const [loggedInUserData, setLoggedInUserData] = useState(USER_INITIAL_STATE);
-
-
-  console.log("token", token);
-  console.log("loggedInUserData", loggedInUserData);
 
   // login a user and store token in context & localStorage
   async function loginUser(username, password) {
@@ -43,6 +37,22 @@ function App() {
     }
     catch (error) {
       // array of errors from backend
+      console.log(error);
+    }
+  }
+
+  // register a user and store token in context & localStorage
+  async function registerUser(userData) {
+    try {
+      const res = await JoblyApi.register(userData);
+      localStorage.setItem("_token", res.token);
+      setLoggedInUserData(state => ({
+        ...state,
+        _token: res.token,
+        loggedOut: false
+      }))
+    }
+    catch(error) {
       console.log(error);
     }
   }
@@ -68,7 +78,7 @@ function App() {
     }
   }
 
-  // check for token and logged in user data on mount
+  // check for token and logged in user data
   useEffect(function checkForUser() {
     if (token && loggedInUserData.userInfo.username === undefined) {
       let { username } = decode(localStorage._token);
@@ -77,7 +87,7 @@ function App() {
   })
 
   return (
-    <UserDataContext.Provider value={{ loggedInUserData, loginUser, logoutUser }}>
+    <UserDataContext.Provider value={{ loggedInUserData, loginUser, logoutUser, registerUser }}>
       <div className="App">
         <BrowserRouter>
           <Navigation />
