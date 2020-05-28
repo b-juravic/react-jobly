@@ -13,7 +13,7 @@ import decode from "jwt-decode";
  * TODO: Need Handle errors
  */
 function App() {
-  let tokenVal = localStorage._token || null;
+  let tokenVal = localStorage._joblyToken || null;
   const [token, setToken] = useState(tokenVal);
 
   const USER_INITIAL_STATE = {
@@ -27,7 +27,7 @@ function App() {
   async function loginUser(username, password) {
     try {
       const res = await JoblyApi.logIn(username, password);
-      localStorage.setItem("_token", res.token);
+      localStorage.setItem("_joblyToken", res.token);
       // updates user data in App component state/context
       setLoggedInUserData(state => ({
         ...state,
@@ -45,7 +45,7 @@ function App() {
   async function registerUser(userData) {
     try {
       const res = await JoblyApi.register(userData);
-      localStorage.setItem("_token", res.token);
+      localStorage.setItem("_joblyToken", res.token);
       setLoggedInUserData(state => ({
         ...state,
         _token: res.token,
@@ -81,7 +81,7 @@ function App() {
   // check for token and logged in user data
   useEffect(function checkForUser() {
     if (token && loggedInUserData.userInfo.username === undefined) {
-      let { username } = decode(localStorage._token);
+      let { username } = decode(localStorage._joblyToken);
       getUserData(username);
     }
   })
