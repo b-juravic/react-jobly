@@ -3,7 +3,6 @@ import "./Navigation.css";
 import { NavLink } from "react-router-dom";
 import UserDataContext from "./UserDataContext";
 
-
 /**
  * Renders navigation links. Uses loggedInUserData from context to determine links to render.
  * Uses logoutUser function from context to log out a user on click.

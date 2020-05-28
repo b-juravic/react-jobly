@@ -5,7 +5,7 @@ import axios from "axios";
 
 class JoblyApi {
   static async request(endpoint, paramsOrData = {}, verb = "get") {
-    paramsOrData._token = localStorage.getItem("_token");
+    paramsOrData._token = localStorage.getItem("_joblyToken");
 
     console.debug("API Call:", endpoint, paramsOrData, verb);
 
@@ -45,7 +45,7 @@ class JoblyApi {
   // endpoint, paramsOrData = {}, verb = "get"
   // sends request for list of all companies
   static async getAllCompanies(searchTerm) {
-    let res = !searchTerm ? await this.request(`companies`) : await this.request('companies', {search: searchTerm})
+    let res = !searchTerm ? await this.request(`companies`) : await this.request('companies', { search: searchTerm })
     return res.companies;
   }
 
@@ -80,7 +80,7 @@ class JoblyApi {
 
   // sends request for list of all jobs
   static async getAllJobs(searchTerm) {
-    let res = !searchTerm ? await this.request(`jobs`) : await this.request('jobs', {search: searchTerm})
+    let res = !searchTerm ? await this.request(`jobs`) : await this.request('jobs', { search: searchTerm })
     return res.jobs
   }
 
@@ -113,7 +113,7 @@ class JoblyApi {
    * static functionfor making API requests to users routes
    */
 
-   // get user data by username [get]
+  // get user data by username [get]
   static async getUserInfo(username) {
     let res = await this.request(`users/${username}`);
     return res.user;
@@ -126,13 +126,29 @@ class JoblyApi {
     return res.user;
   }
 
-   /**
-   * Auth Routes
-   * static functionfor making API requests to auth routes
-   */
+  // format object keys to snake case for backend and register new user
+  static async register(userData) {
+    let formattedData = {
+      username: userData.username,
+      password: userData.password,
+      first_name: userData.firstName,
+      last_name: userData.lastName,
+      email: userData.email
+    }
 
+    let res = await this.request('users/', formattedData, 'post');
+
+    return res;
+  }
+
+  /**
+  * Auth Routes
+  * static function for making API requests to auth routes
+  */
+
+  // login user
   static async logIn(username, password) {
-    let res = await this.request(`login`, {username, password}, 'post');
+    let res = await this.request(`login`, { username, password }, 'post');
     return res;
   }
 }

@@ -4,7 +4,7 @@ function useLocalStorage(initialToken=false) {
   const [token, setValue] = useState(initialToken);
 
   const setToken = () => {
-    if(localStorage._token) {
+    if(localStorage._joblyToken) {
       setValue(true)
     }
   }
