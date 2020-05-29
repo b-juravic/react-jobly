@@ -1,12 +1,16 @@
 import React, { useState, useContext } from "react"
 import UserDataContext from "./UserDataContext";
+import JoblyApi from "./JoblyAPI";
 
-// TODO: FIMISH Profile form!
-
-/** Renders User Profile with a form to edit
-*/
+/**
+ * TODO: prevent form submission if password blank
+ * TODO: Need to map over error messages for display- right now showing single message, but array returned!
+ *
+ * Renders User Profile with a form to edit
+ */
 function Profile() {
-  const {loggedInUserData} = useContext(UserDataContext);
+  const { loggedInUserData } = useContext(UserDataContext);
+  const { getUserData } = useContext(UserDataContext);
   const userInfo = loggedInUserData.userInfo;
 
   const INITIAL_STATE = {
@@ -14,38 +18,96 @@ function Profile() {
     firstName: userInfo.first_name,
     lastName: userInfo.last_name,
     email: userInfo.email,
-    photoURL: userInfo.photo_url || "",
-    password: ""}
+    password: ""
+  }
 
+  const [messages, setMessages] = useState({});
   const [profileFormData, setProfileFormData] = useState(INITIAL_STATE);
+  const { username, firstName, lastName, email, password } = profileFormData;
 
   function handleChange(evt) {
-    //TBD
+    const { name, value } = evt.target;
+    setProfileFormData(current => ({
+      ...current,
+      [name]: value
+    }));
   }
 
-  function handleSubmit(evt) {
-    //TBD
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+    try {
+      await JoblyApi.updateUser(profileFormData, username);
+      setMessages({ status: "success", messages: "Your profile was sucessfully updated." });
+
+      // Update state with user data changes
+      getUserData();
+    }
+    catch (err) {
+      setMessages({ status: "error", messages: err });
+    }
   }
-
-  console.log("profile", userInfo);
-  console.log("profile form data", profileFormData);
-
-  const { username, firstName, lastName, email, photoURL, password } = profileFormData;
 
   return (
     <div>
       <h3>Profile</h3>
+      {messages?.messages
+        ? <div className={messages?.status === "error" ? "alert alert-danger" : "alert alert-success"}>
+      {messages?.messages ? messages.messages : null} </div>
+      : null}
       <form className="Profile" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
-            className="form-control"
+            className="form-control-plaintext"
             name="username"
             id="username"
             value={username}
+            onChange={handleChange}
+            readOnly>
+          </input>
+        </div>
+        <div className="form-group">
+          <label htmlFor="firstName">First Name</label>
+          <input
+            className="form-control"
+            name="firstName"
+            id="firstName"
+            value={firstName}
             onChange={handleChange}>
           </input>
         </div>
+        <div className="form-group">
+          <label htmlFor="lastName">Last Name</label>
+          <input
+            className="form-control"
+            name="lastName"
+            id="lastName"
+            value={lastName}
+            onChange={handleChange}>
+          </input>
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input
+            className="form-control"
+            name="email"
+            id="email"
+            value={email}
+            onChange={handleChange}>
+          </input>
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input
+            className="form-control"
+            type="password"
+            name="password"
+            id="password"
+            value={password}
+            onChange={handleChange}>
+          </input>
+        </div>
+        <button>Save Changes</button>
       </form>
     </div>
   )

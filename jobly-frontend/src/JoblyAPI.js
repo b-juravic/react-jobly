@@ -121,8 +121,14 @@ class JoblyApi {
 
 
   // sends PATCH request to update user information at users/username
-  static async updateUser(userUpdateData, username) {
-    let res = await this.request(`users/${username}`, userUpdateData, 'patch');
+  static async updateUser(userData, username) {
+    let formattedData = {
+      password: userData.password,
+      first_name: userData.firstName,
+      last_name: userData.lastName,
+      email: userData.email
+    }
+    let res = await this.request(`users/${username}`, formattedData, 'patch');
     return res.user;
   }
 
