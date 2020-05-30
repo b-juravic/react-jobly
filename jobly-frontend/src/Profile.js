@@ -1,12 +1,18 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext } from "react";
 import UserDataContext from "./UserDataContext";
 import JoblyApi from "./JoblyAPI";
 
+// TODO: Prevent form submission if password blank- other FE form validation?
+// TODO: Need to map over error messages for display- right now showing single message, but array returned!
+
 /**
- * TODO: prevent form submission if password blank
- * TODO: Need to map over error messages for display- right now showing single message, but array returned!
+ * Renders user Profile with a form allowing for edits.
  *
- * Renders User Profile with a form to edit
+ * Connects to context
+ * -- loggedInUserData { _token: "", userInfo: {}, loggedOut: boolean}
+ * -- getUserData()
+ *
+ * App -> Routes -> PrivateRoute -> Profile
  */
 function Profile() {
   const { loggedInUserData } = useContext(UserDataContext);
@@ -21,7 +27,7 @@ function Profile() {
     password: ""
   }
 
-  const [messages, setMessages] = useState({});
+  const [userMessages, setUserMessages] = useState({});
   const [profileFormData, setProfileFormData] = useState(INITIAL_STATE);
   const { username, firstName, lastName, email, password } = profileFormData;
 
@@ -37,78 +43,92 @@ function Profile() {
     evt.preventDefault();
     try {
       await JoblyApi.updateUser(profileFormData, username);
-      setMessages({ status: "success", messages: "Your profile was sucessfully updated." });
+      setUserMessages({ status: "success", messages: "Your profile was sucessfully updated." });
 
-      // Update state with user data changes
+      // Update App state/context with user data changes
       getUserData();
     }
     catch (err) {
-      setMessages({ status: "error", messages: err });
+      setUserMessages({ status: "error", messages: err });
     }
   }
 
+  function displayUserMessages() {
+    return (
+      <div
+        className={userMessages.status === "error" ? "alert alert-danger" : "alert alert-success"}>
+        {userMessages.messages}
+      </div>
+    )
+  }
+
   return (
-    <div>
+    <div className="Profile container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
       <h3>Profile</h3>
-      {messages?.messages
-        ? <div className={messages?.status === "error" ? "alert alert-danger" : "alert alert-success"}>
-      {messages?.messages ? messages.messages : null} </div>
-      : null}
-      <form className="Profile" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input
-            className="form-control-plaintext"
-            name="username"
-            id="username"
-            value={username}
-            onChange={handleChange}
-            readOnly>
-          </input>
+      {userMessages?.messages
+            ? displayUserMessages()
+            : null}
+      <div className="card">
+        <div className="card-body">
+          <form
+            className="Profile font-weight-bold"
+            onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="username">Username</label>
+              <input
+                className="form-control-plaintext"
+                name="username"
+                id="username"
+                value={username}
+                onChange={handleChange}
+                readOnly>
+              </input>
+            </div>
+            <div className="form-group">
+              <label htmlFor="firstName">First Name</label>
+              <input
+                className="form-control"
+                name="firstName"
+                id="firstName"
+                value={firstName}
+                onChange={handleChange}>
+              </input>
+            </div>
+            <div className="form-group">
+              <label htmlFor="lastName">Last Name</label>
+              <input
+                className="form-control"
+                name="lastName"
+                id="lastName"
+                value={lastName}
+                onChange={handleChange}>
+              </input>
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                className="form-control"
+                name="email"
+                id="email"
+                value={email}
+                onChange={handleChange}>
+              </input>
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                className="form-control"
+                type="password"
+                name="password"
+                id="password"
+                value={password}
+                onChange={handleChange}>
+              </input>
+            </div>
+            <button className="btn btn-primary">Save Changes</button>
+          </form>
         </div>
-        <div className="form-group">
-          <label htmlFor="firstName">First Name</label>
-          <input
-            className="form-control"
-            name="firstName"
-            id="firstName"
-            value={firstName}
-            onChange={handleChange}>
-          </input>
-        </div>
-        <div className="form-group">
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            className="form-control"
-            name="lastName"
-            id="lastName"
-            value={lastName}
-            onChange={handleChange}>
-          </input>
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            className="form-control"
-            name="email"
-            id="email"
-            value={email}
-            onChange={handleChange}>
-          </input>
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            className="form-control"
-            type="password"
-            name="password"
-            id="password"
-            value={password}
-            onChange={handleChange}>
-          </input>
-        </div>
-        <button>Save Changes</button>
-      </form>
+      </div>
     </div>
   )
 }

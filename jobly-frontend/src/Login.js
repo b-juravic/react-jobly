@@ -8,8 +8,8 @@ import UserDataContext from "./UserDataContext";
  * TODO: require input from required fields
  */
 
- const LOGIN_INITIAL_STATE = { username: "", password: "" };
- const SIGNUP_INITIAL_STATE = { username: "", password: "", firstName: "", lastName: "", email: ""};
+const LOGIN_INITIAL_STATE = { username: "", password: "" };
+const SIGNUP_INITIAL_STATE = { username: "", password: "", firstName: "", lastName: "", email: "" };
 
 /*
  * Renders Login or Registration form
@@ -27,7 +27,7 @@ function Login() {
   const history = useHistory();
 
   // if user currently logged in, redirect to home page
-  if (loggedInUserData.loggedOut === false) return <Redirect to="/"/>
+  if (loggedInUserData.loggedOut === false) return <Redirect to="/" />
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -82,25 +82,25 @@ function Login() {
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="username">Username</label>
-                <input
-                  className="form-control"
-                  type="text"
-                  id="username"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleChange}>
-                </input>
+              <input
+                className="form-control"
+                type="text"
+                id="username"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}>
+              </input>
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-                <input
-                  className="form-control"
-                  type="text"
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}>
-                </input>
+              <input
+                className="form-control"
+                type="text"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}>
+              </input>
             </div>
             {/* signUp fields only render if signUp state === true*/}
             {signUp ?
