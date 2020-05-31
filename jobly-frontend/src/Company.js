@@ -5,31 +5,33 @@ import JobCard from "./JobCard";
 import "./Company.css";
 
 /**
- * Renders Detail about a specific company along with JobCards for that company's jobs
+ * Renders detail about a specific company including JobCards for each available job.
+ * State
+ * -- company {name: "", description: "", jobs: [{id: "", title: "", salary: num, equity: num}...]}
+ *
+ * App -> Routes -> PrivateRoute -> [Companies] -> Company
  */
 function Company() {
-  /**company State is an object containing company data:
-   * {name: name,
-   * description: desc,
-   * jobs: [{id: id, title: title, salary: salary, equity: equity}...]}
-   */
   const [company, setCompany] = useState({ jobs: [] });
   const { handle } = useParams();
 
-  useEffect(() => {
+  /**fetch single company from backend */
+  useEffect(function getSingleCompany () {
     async function fetchCompany() {
       let newCompany = await JoblyApi.getCompany(handle);
       setCompany(newCompany);
     }
     fetchCompany();
-  }, [/**fetch single company from backend upon mount */]);
+  }, [handle]);
+
+  const {name, description, jobs} = company;
 
   return (
     <div className="Company col-md-8 offset-md-2">
-      <h5>{company.name}</h5>
-      <p>{company.description}</p>
+      <h5>{name}</h5>
+      <p>{description}</p>
         <ul>
-          {company.jobs.map(job => (
+          {jobs.map(job => (
             <JobCard
               key={job.id}
               title={job.title}

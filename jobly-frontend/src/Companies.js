@@ -4,38 +4,35 @@ import CompanyCard from "./CompanyCard";
 import Search from "./Search";
 import "./Companies.css";
 
-// NOTE/TODO: Scenario - user enters in URL to "companies/not-a-real-thing" and Rithm demo app
-// renders "loading...". Joel said it was because the app wasn't handling errors for unfound imaginary companies
-// If time, work out the solution.
-
 /**
- * TODO: Add loading spinner
- * Renders a list of all CompanyCards and a search box
+ * Renders a list of CompanyCards for all companies and a Search to filter companies
+ * State
+ * -- companies: [{handle: "", name: "", description: "", photo_url: ""}, {}, ...]
+ *
+ * App -> Routes -> PrivateRoute -> Companies
  */
 function Companies() {
-
-  const [companyList, setCompanyList] = useState([])
+  const [companies, setcompanies] = useState([]);
 
   // Filters company list if search term entered into search box
   async function filterCompanies(searchTerm) {
     const req = await JoblyApi.getAllCompanies(searchTerm);
-    setCompanyList([...req]);
+    setcompanies([...req]);
   }
 
-  useEffect(() => {
+  useEffect(function getAllCompanies() {
     async function fetchCompanies() {
       let newCompanies = await JoblyApi.getAllCompanies();
-      setCompanyList([...newCompanies]);
+      setcompanies([...newCompanies]);
     }
     fetchCompanies();
-  }, [/**fetch all companies from backend upon mount */]
-  )
+  }, [/**fetch all companies from backend upon mount */])
 
   return (
     <div className="Companies col-md-8 offset-md-2">
       <Search filter={filterCompanies} />
       <ul className="Companies-container">
-        {companyList.map(company => (
+        {companies.map(company => (
           <CompanyCard
             key={company.handle}
             name={company.name}

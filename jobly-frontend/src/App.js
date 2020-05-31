@@ -7,10 +7,22 @@ import JoblyApi from "./JoblyAPI";
 import UserDataContext from "./UserDataContext";
 import decode from "jwt-decode";
 
+// TODO: Need loading component and add to all components that load data
+// TODO: Need not found component= if user navigates to noexistent path
+// TODO: Need Handle errors
+
 /**
- * TODO: Need Not authorized component? if user navigates to jobs or companies from url bar when not logged in
- * TODO: Need not found component= if user navigates to noexistent path
- * TODO: Need Handle errors
+ * Renders Navigation and Routes, wrapped with provider for UserData Context.
+ * State:
+ * -- token: ""
+ * -- loggedInUserData: {_token: "", userInfo: {}, loggedOut: boolean}
+ *
+ * UserDataContext
+ * -- loggedInUserData
+ * -- loginUser()
+ * -- logoutUser()
+ * -- registerUser()
+ * -- getUserData()
  */
 function App() {
   let tokenVal = localStorage._joblyToken || null;
@@ -24,6 +36,7 @@ function App() {
   const [loggedInUserData, setLoggedInUserData] = useState(USER_INITIAL_STATE);
 
   // login a user and store token in context & localStorage
+  // get user data and store in context
   async function loginUser(username, password) {
     try {
       const res = await JoblyApi.logIn(username, password);
@@ -34,6 +47,7 @@ function App() {
         _token: res.token,
         loggedOut: false
       }))
+      await getUserData();
     }
     catch (error) {
       // array of errors from backend
@@ -42,6 +56,7 @@ function App() {
   }
 
   // register a user and store token in context & localStorage
+  // get user data and store in context
   async function registerUser(userData) {
     try {
       const res = await JoblyApi.register(userData);
@@ -51,21 +66,23 @@ function App() {
         _token: res.token,
         loggedOut: false
       }))
+      await getUserData();
     }
-    catch(error) {
+    catch (error) {
       console.log(error);
     }
   }
 
-  // logout user, updated state/context
+  // logout user, update state/context
   function logoutUser() {
     localStorage.clear();
     setLoggedInUserData(USER_INITIAL_STATE);
   }
 
-  // get user data from backend API
-  async function getUserData(username) {
+  // get user data from backend API and store in context
+  async function getUserData() {
     try {
+      let { username } = decode(localStorage._joblyToken);
       const res = await JoblyApi.getUserInfo(username);
       setLoggedInUserData(state => ({
         ...state,
@@ -81,13 +98,12 @@ function App() {
   // check for token and logged in user data
   useEffect(function checkForUser() {
     if (token && loggedInUserData.userInfo.username === undefined) {
-      let { username } = decode(localStorage._joblyToken);
-      getUserData(username);
+      getUserData();
     }
   })
 
   return (
-    <UserDataContext.Provider value={{ loggedInUserData, loginUser, logoutUser, registerUser }}>
+    <UserDataContext.Provider value={{ loggedInUserData, loginUser, logoutUser, registerUser, getUserData }}>
       <div className="App">
         <BrowserRouter>
           <Navigation />

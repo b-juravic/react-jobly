@@ -1,7 +1,16 @@
 import React from "react"
 
+// TODO: Add application logic
 
-/** Component renders detail for a single job */
+/**
+ * Renders details about a single job
+ * Props
+ * -- title: ""
+ * -- salary: num
+ * -- equity: num
+ *
+ * App -> Routes -> PrivateRoute -> [Jobs or Company] -> JobCard
+ */
 function JobCard({ title, salary, equity }) {
 
   return (

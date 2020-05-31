@@ -8,8 +8,10 @@ import Login from "./Login";
 import Company from "./Company";
 import PrivateRoute from "./PrivateRoute";
 
-/*
- * Routes function renders Components by assigned URL path.
+/**
+ * Renders public [Route] and private routes [PrivateRoute]
+ *
+ * App -> Routes
  */
 function Routes() {
 

@@ -3,10 +3,15 @@ import { Redirect, Route } from "react-router-dom";
 import UserDataContext from "./UserDataContext";
 
 /**
- * Protects private routes[Companies, Company, Jobs] that can only be accessed if user has authenticated.
- * Redirects user to login page if not logged.
+ * Protects private routes[Companies, Company, Jobs, Profile] only be accessed if user has authenticated.
+ * Connects to context to access users loggedin/out status, redirects user to login page if not logged in.
  *
- * Connects to context to access users loggedin/out status
+ * Props
+ * -- exact- boolean
+ * -- path- url path to child component
+ * -- children- child component user attempting to access
+ *
+ * App -> Routes -> PrivateRoute
  */
 function PrivateRoute({ exact, path, children }) {
   const { loggedInUserData } = useContext(UserDataContext);

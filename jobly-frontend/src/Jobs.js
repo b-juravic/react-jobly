@@ -5,32 +5,34 @@ import JoblyApi from "./JoblyAPI";
 import "./Jobs.css";
 
 /**
- * TODO: Add loading spinner
- * Renders a list of all JobCards and a search box
+ * Renders a list of JobCards for all jobs and a Search to filter jobs
+ * State
+ * -- jobs: [{id: num, title: "", company_handle: "", salary: num, equity: num}, {}, ...]
+ *
+ * App -> Routes -> PrivateRoute -> Jobs
  */
 function Jobs() {
-  const [jobList, setJobList] = useState([])
+  const [jobs, setJobs] = useState([])
 
   // Filters job list if search term entered into search box
   async function filterJobs(searchTerm) {
     const req = await JoblyApi.getAllJobs(searchTerm);
-    setJobList([...req]);
+    setJobs([...req]);
   }
 
-  useEffect(() => {
+  useEffect(function getAllJobs() {
     async function fetchJobs() {
       let newJobs = await JoblyApi.getAllJobs();
-      setJobList([...newJobs]);
+      setJobs([...newJobs]);
     }
     fetchJobs();
-  }, [/**fetch all jobs from backend upon mount */]
-  )
+  }, [/**fetch all jobs from backend upon mount */])
 
   return (
     <div className="Jobs col-md-8 offset-md-2">
       <Search filter={filterJobs} />
       <ul className="Jobs-container">
-        {jobList.map(job => (
+        {jobs.map(job => (
           <JobCard
             key={job.id}
             title={job.title}
