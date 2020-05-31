@@ -7,10 +7,22 @@ import JoblyApi from "./JoblyAPI";
 import UserDataContext from "./UserDataContext";
 import decode from "jwt-decode";
 
+// TODO: Need loading component and add to all components that load data
+// TODO: Need not found component= if user navigates to noexistent path
+// TODO: Need Handle errors
+
 /**
- * TODO: Need loading component and add to all components that load data
- * TODO: Need not found component= if user navigates to noexistent path
- * TODO: Need Handle errors
+ * Renders Navigation and Routes, wrapped with provider for UserData Context.
+ * State:
+ * -- token: ""
+ * -- loggedInUserData: {_token: "", userInfo: {}, loggedOut: boolean}
+ *
+ * UserDataContext
+ * -- loggedInUserData
+ * -- loginUser()
+ * -- logoutUser()
+ * -- registerUser()
+ * -- getUserData()
  */
 function App() {
   let tokenVal = localStorage._joblyToken || null;
@@ -56,12 +68,12 @@ function App() {
       }))
       await getUserData();
     }
-    catch(error) {
+    catch (error) {
       console.log(error);
     }
   }
 
-  // logout user, updated state/context
+  // logout user, update state/context
   function logoutUser() {
     localStorage.clear();
     setLoggedInUserData(USER_INITIAL_STATE);

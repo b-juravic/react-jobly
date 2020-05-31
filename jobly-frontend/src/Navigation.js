@@ -4,18 +4,23 @@ import { NavLink } from "react-router-dom";
 import UserDataContext from "./UserDataContext";
 
 /**
- * Renders navigation links. Uses loggedInUserData from context to determine links to render.
- * Uses logoutUser function from context to log out a user on click.
+ * Renders navigation links
+ *
+ * Uses loggedInUserData.loggedOut [boolean] from context to determine links to render.
+ * Uses logoutUser function from context to logout a user on click of logout link.
+ *
+ * App -> Navigation
  */
 function Navigation() {
   const { loggedInUserData, logoutUser } = useContext(UserDataContext);
 
-  if (!loggedInUserData._token) {
-    return (
-      <nav className="Navigation navbar navbar-expand-md">
-        <NavLink className="navbar-brand" exact to="/">
-          Jobly
+  return (
+    <nav className="Navigation navbar navbar-expand-md">
+      <NavLink className="navbar-brand" exact to="/">
+        Jobly
         </NavLink>
+      {loggedInUserData.loggedOut
+        ?
         <ul className="navbar-nav ml-auto">
           <li>
             <NavLink
@@ -25,16 +30,7 @@ function Navigation() {
         </NavLink>
           </li>
         </ul>
-      </nav>
-    );
-  }
-  else {
-    return (
-      <nav className="Navigation navbar navbar-expand-md">
-        <NavLink className="navbar-brand" exact to="/">
-          Jobly
-        </NavLink>
-
+        :
         <ul className="navbar-nav ml-auto">
           <li>
             <NavLink className="nav-item mr-4" exact to="/companies">
@@ -60,10 +56,9 @@ function Navigation() {
               Logout
           </NavLink>
           </li>
-        </ul>
-      </nav>
-    );
-  }
+        </ul>}
+    </nav>
+  );
 }
 
 export default Navigation;

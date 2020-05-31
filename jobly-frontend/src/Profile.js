@@ -3,7 +3,7 @@ import UserDataContext from "./UserDataContext";
 import JoblyApi from "./JoblyAPI";
 
 // TODO: Prevent form submission if password blank- other FE form validation?
-// TODO: Need to map over error messages for display- right now showing single message, but array returned!
+// TODO: Need to map over error messages - right now showing single message, but array returned from BE
 
 /**
  * Renders user Profile with a form allowing for edits.
@@ -43,7 +43,7 @@ function Profile() {
     evt.preventDefault();
     try {
       await JoblyApi.updateUser(profileFormData, username);
-      setUserMessages({ status: "success", messages: "Your profile was sucessfully updated." });
+      setUserMessages({ status: "success", messages: "Your profile was sucessfully updated" });
 
       // Update App state/context with user data changes
       getUserData();

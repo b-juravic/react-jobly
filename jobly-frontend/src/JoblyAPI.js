@@ -1,8 +1,8 @@
 import axios from "axios";
 
-//TODO: add try/catch to each asyn function
-// when catch error make array of errors if not already
-
+/**
+ * Functions for backend enpoint requests.
+ */
 class JoblyApi {
   static async request(endpoint, paramsOrData = {}, verb = "get") {
     paramsOrData._token = localStorage.getItem("_joblyToken");
@@ -26,102 +26,67 @@ class JoblyApi {
       throw Array.isArray(message) ? message : [message];
     }
   }
-  /**
-   * NOTE: also made route requests for routes that require Admin authentication
-   */
-
 
   /**
-   * Companies Requests
-   * static functions that can be called to send http requests to the companies routes
-   */
+  * Companies Routes
+  * static functions for making API requests to companies routes
+  */
 
-  // sends request for a single company given the company handle (PK)
+  // Request single company by company handle [GET]
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
     return res.company;
   }
 
-  // endpoint, paramsOrData = {}, verb = "get"
-  // sends request for list of all companies
+  // Request all companies or filtered companies by search term [GET]
   static async getAllCompanies(searchTerm) {
-    let res = !searchTerm ? await this.request(`companies`) : await this.request('companies', { search: searchTerm })
+    let res = searchTerm
+      ? await this.request('companies', { search: searchTerm })
+      : await this.request(`companies`)
+
     return res.companies;
   }
 
-  // sends POST request to create a new company
-  static async postNewCompany(newCompanyData) {
-    let res = await this.request(`companies`, newCompanyData, 'post');
-    return res.company;
-  }
-
-  // sends PATCH request to update company information at the company handle
-  static async updateCompany(companyUpdateData, handle) {
-    let res = await this.request(`companies/${handle}`, companyUpdateData, 'patch');
-    return res.company;
-  }
-
-  // sends DELETE request for the given company handle
-  static async deleteCompany(handle) {
-    let res = await this.request(`companies/${handle}`, 'delete');
-    return res.message;
-  }
-
   /**
-* Jobs Requests
-* static functions that can be called to send http requests to the Jobs routes
-*/
+  * Jobs Routes
+  * static functions for making API requests to jobs routes
+  */
 
-  // sends request for a single job given the job id (PK)
+  // Request single job by job id [GET]
   static async getJob(id) {
     let res = await this.request(`jobs/${id}`);
     return res.job;
   }
 
-  // sends request for list of all jobs
+  // Request all jobs or filtered jobs by search term [GET]
   static async getAllJobs(searchTerm) {
-    let res = !searchTerm ? await this.request(`jobs`) : await this.request('jobs', { search: searchTerm })
+    let res = searchTerm
+      ? await this.request('jobs', { search: searchTerm })
+      : await this.request(`jobs`)
+
     return res.jobs
   }
 
-  // sends POST request to create a new job
-  static async postNewJob(newJobData) {
-    let res = await this.request(`jobs`, newJobData, 'post');
-    return res.job
-  }
-
-  // sends PATCH request to update job information at the job id
-  static async updateJob(jobUpdateData, id) {
-    let res = await this.request(`jobs/${id}`, jobUpdateData, 'patch');
-    return res.job;
-  }
-
-  // sends DELETE request for the given job id
-  static async deleteJob(id) {
-    let res = await this.request(`jobs/${id}`, 'delete');
-    return res.message;
-  }
-
-  // sends POST request to apply to a job
+  // Request to apply to single job by id [POST]
   static async applyToJob(id) {
     let res = await this.request(`jobs/${id}/apply`, 'post');
     return res.message;
   }
 
   /**
-   * Users Routes
-   * static functionfor making API requests to users routes
-   */
+  * Users Routes
+  * static functions for making API requests to users routes
+  */
 
-  // get user data by username [get]
+  // Request single user by username [GET]
   static async getUserInfo(username) {
     let res = await this.request(`users/${username}`);
     return res.user;
   }
 
-
-  // sends PATCH request to update user information at users/username
+  // Request an update to a single user's information by username [PATCH]
   static async updateUser(userData, username) {
+    // format keys for backend
     let formattedData = {
       password: userData.password,
       first_name: userData.firstName,
@@ -129,11 +94,13 @@ class JoblyApi {
       email: userData.email
     }
     let res = await this.request(`users/${username}`, formattedData, 'patch');
+
     return res.user;
   }
 
-  // format object keys to snake case for backend and register new user
+  // Request to register a single user [POST]
   static async register(userData) {
+    // format keys for backend
     let formattedData = {
       username: userData.username,
       password: userData.password,
@@ -141,7 +108,6 @@ class JoblyApi {
       last_name: userData.lastName,
       email: userData.email
     }
-
     let res = await this.request('users/', formattedData, 'post');
 
     return res;
@@ -149,15 +115,14 @@ class JoblyApi {
 
   /**
   * Auth Routes
-  * static function for making API requests to auth routes
+  * static functions for making API requests to auth routes
   */
 
-  // login user
+  // Request to login a single user with username and password [POST]
   static async logIn(username, password) {
     let res = await this.request(`login`, { username, password }, 'post');
     return res;
   }
 }
-
 
 export default JoblyApi;

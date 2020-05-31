@@ -2,17 +2,23 @@ import React, { useState } from "react";
 import "./Search.css";
 
 /**
- * Renders a search form, stores search form input
- * and invokes filter function (passed down as prop) with search input data.
+ * Renders Search form for user to seach companies or jobs
+ * Props
+ * -- filter()
+ *
+ * State
+ * --searchTerm: ""
+ *
+ * App -> Routes -> PrivateRoute -> [Companies or Jobs] -> Search
  */
 function Search({ filter }) {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleChange = (evt) => {
+  function handleChange(evt) {
     setSearchTerm(evt.target.value);
   }
 
-  const handleSubmit = (evt) => {
+  function handleSubmit(evt) {
     evt.preventDefault();
     filter(searchTerm);
   }
@@ -31,7 +37,6 @@ function Search({ filter }) {
         <button className="btn btn-lg btn-primary">Search</button>
       </form>
     </div>
-
   );
 }
 

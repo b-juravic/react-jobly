@@ -3,31 +3,36 @@ import { Redirect, useHistory } from "react-router-dom";
 import "./Login.css";
 import UserDataContext from "./UserDataContext";
 
-/**
- * TODO: map over errors to display for user
- * TODO: require input from required fields
- */
-
-const LOGIN_INITIAL_STATE = { username: "", password: "" };
-const SIGNUP_INITIAL_STATE = { username: "", password: "", firstName: "", lastName: "", email: "" };
+// TODO: map over errors to display for user
+// TODO: require input from required fields and other form validation?
 
 /*
- * Renders Login or Registration form
+ * Renders Login [default] or Registration form. If user already logged in, Redirects home.
+ * Upon successful login/ register, pushes to history and redirects to jobs.
+ *
+ * State
+ * -- formData: login or registration form fields {}
+ * -- signUp: boolean to determine which form to render
+ *
  *  * Connects to context:
- * -- loginUser: function to login user
- * -- registerUser: function to register new user
+ * -- loginUser() function to login user
+ * -- registerUser() function to register new user
  * -- loggedInUserData.loggedOut to determine login status of user
+ *
+ * App -> Routes -> Login
  */
 function Login() {
-  const [signUp, setSignUp] = useState(false);
+  const LOGIN_INITIAL_STATE = { username: "", password: "" };
+  const SIGNUP_INITIAL_STATE = { username: "", password: "", firstName: "", lastName: "", email: "" };
 
   const [formData, setFormData] = useState(LOGIN_INITIAL_STATE);
+  const [signUp, setSignUp] = useState(false);
 
   const { loginUser, registerUser, loggedInUserData } = useContext(UserDataContext);
   const history = useHistory();
 
   // if user currently logged in, redirect to home page
-  if (loggedInUserData.loggedOut === false) return <Redirect to="/" />
+  if (!loggedInUserData.loggedOut) return <Redirect to="/" />
 
   function handleChange(evt) {
     const { name, value } = evt.target;
