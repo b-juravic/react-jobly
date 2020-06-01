@@ -69,7 +69,7 @@ class JoblyApi {
 
   // Request to apply to single job by id [POST]
   static async applyToJob(id) {
-    let res = await this.request(`jobs/${id}/apply`, 'post');
+    let res = await this.request(`jobs/${id}/apply`, {}, 'post');
     return res.message;
   }
 
