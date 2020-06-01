@@ -8,14 +8,21 @@ import UserDataContext from "./UserDataContext";
 import decode from "jwt-decode";
 
 // TODO: Need loading component and add to all components that load data
-// TODO: Need not found component= if user navigates to noexistent path
+// TODO: Need not found component- if user navigates to noexistent path
 // TODO: Need Handle errors
 
 /**
  * Renders Navigation and Routes, wrapped with provider for UserData Context.
  * State:
  * -- token: ""
- * -- loggedInUserData: {_token: "", userInfo: {}, loggedOut: boolean}
+ * -- loggedInUserData: {_token: "",
+ *                       userInfo: {username: "",
+ *                                  first_name: "",
+ *                                  last_name: "",
+ *                                  email: "",
+ *                                  photo_url: "",
+ *                                  jobs: [{id: num, title: "", company_handle: "", state: ""}, {}...]},
+ *                       loggedOut: boolean}
  *
  * UserDataContext
  * -- loggedInUserData

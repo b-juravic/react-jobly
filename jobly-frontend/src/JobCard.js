@@ -5,13 +5,17 @@ import React from "react"
 /**
  * Renders details about a single job
  * Props
+ * -- id: num
  * -- title: ""
  * -- salary: num
  * -- equity: num
+ * -- applied: boolean
  *
  * App -> Routes -> PrivateRoute -> [Jobs or Company] -> JobCard
  */
-function JobCard({ title, salary, equity }) {
+function JobCard({ id, title, salary, equity, applied }) {
+
+  console.log("jobCard applied", applied);
 
   return (
     <li className="JobCard card">

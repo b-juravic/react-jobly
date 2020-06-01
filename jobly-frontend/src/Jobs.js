@@ -1,18 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import JobCard from "./JobCard";
 import Search from "./Search";
 import JoblyApi from "./JoblyAPI";
 import "./Jobs.css";
+import UserDataContext from "./UserDataContext";
 
 /**
  * Renders a list of JobCards for all jobs and a Search to filter jobs
  * State
  * -- jobs: [{id: num, title: "", company_handle: "", salary: num, equity: num}, {}, ...]
  *
+ * Connects to conext to obtain applied jobs for current user
+ * -- loggedInUserData.userInfo.jobs: [{id: num, title: "", company_handle: "", state: ""}, {}...]
+ *
  * App -> Routes -> PrivateRoute -> Jobs
  */
 function Jobs() {
-  const [jobs, setJobs] = useState([])
+  const [jobs, setJobs] = useState([]);
+
+  const { loggedInUserData } = useContext(UserDataContext);
+  // create array of applied job ids for current user
+  const appliedJobsIds = loggedInUserData.userInfo.jobs.map(j => (j.id));
 
   // Filters job list if search term entered into search box
   async function filterJobs(searchTerm) {
@@ -35,9 +43,11 @@ function Jobs() {
         {jobs.map(job => (
           <JobCard
             key={job.id}
+            id={job.id}
             title={job.title}
             salary={job.salary}
             equity={job.equity}
+            applied={appliedJobsIds.includes(job.id)}
           />))}
       </ul>
     </div>
