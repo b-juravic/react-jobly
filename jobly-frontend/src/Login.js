@@ -71,7 +71,7 @@ function Login() {
       <button
         name="login"
         type="button"
-        className="btn btn-primary btn-login"
+        className="btn btn btn-login btn-info"
         onClick={displayLoginOrSignUp}>
         Login
       </button>

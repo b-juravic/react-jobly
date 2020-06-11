@@ -6,6 +6,8 @@ form {
   border-bottom-right-radius: 0 !important;
   border-top-right-radius: 0 !important;
   border-top-left-radius: .25rem !important;
+  /* background-color: #005493 !important;
+  color: white !important; */
 }
 
 .btn-signup {

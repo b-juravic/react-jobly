@@ -34,18 +34,16 @@ function JobCard({ id, title, salary, equity, applied }) {
         <div>Salary: ${salary}</div>
         <div>Equity: {equity}</div>
         {applied
-          ?
-          <button
-            className="btn btn-md btn-danger float-right font-weight-bold text-uppercase"
-            disabled
-          >Apply
-        </button>
-          :
-          <button
-            className="btn btn-md btn-danger float-right font-weight-bold text-uppercase"
-            onClick={handleApply}
-          >Apply
-        </button>}
+          ? <button
+              className="btn btn-md btn-danger float-right font-weight-bold text-uppercase"
+              disabled
+            >Applied
+            </button>
+          : <button
+              className="btn btn-md btn-danger float-right font-weight-bold text-uppercase"
+              onClick={handleApply}
+            >Apply
+            </button>}
       </div>
     </li>
   );

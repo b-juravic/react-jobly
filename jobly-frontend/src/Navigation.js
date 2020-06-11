@@ -17,46 +17,43 @@ function Navigation() {
   return (
     <nav className="Navigation navbar navbar-expand-md">
       <NavLink className="navbar-brand" exact to="/">
-        Jobly
-        </NavLink>
+      Jobly
+      </NavLink>
       {loggedInUserData.loggedOut
-        ?
-        <ul className="navbar-nav ml-auto">
-          <li>
-            <NavLink
-              className="nav-item"
-              exact to="/login">
+        ? <ul className="navbar-nav ml-auto">
+            <li>
+              <NavLink
+                className="nav-item"
+                exact to="/login">
               Login
-        </NavLink>
-          </li>
-        </ul>
-        :
-        <ul className="navbar-nav ml-auto">
-          <li>
-            <NavLink className="nav-item mr-4" exact to="/companies">
+              </NavLink>
+            </li>
+          </ul>
+        : <ul className="navbar-nav ml-auto">
+            <li>
+              <NavLink className="nav-item mr-4" exact to="/companies">
               Companies
-          </NavLink>
-          </li>
-          <li>
-            <NavLink className="nav-item mr-4" exact to="/jobs">
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="nav-item mr-4" exact to="/jobs">
               Jobs
-          </NavLink>
-          </li>
-          <li>
-            <NavLink className="nav-item mr-4" exact to="/profile">
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="nav-item mr-4" exact to="/profile">
               Profile
-          </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className="nav-item mr-4"
-              exact to="/"
-              onClick={logoutUser}
-            >
-              Logout
-          </NavLink>
-          </li>
-        </ul>}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className="nav-item mr-4"
+                exact to="/"
+                onClick={logoutUser}
+              >Logout
+              </NavLink>
+            </li>
+          </ul>}
     </nav>
   );
 }
