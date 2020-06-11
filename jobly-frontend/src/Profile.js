@@ -64,7 +64,7 @@ function Profile() {
 
   return (
     <div className="Profile container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-      <h3>Profile</h3>
+      <h3 className="text-white">Profile</h3>
       {userMessages?.messages
             ? displayUserMessages()
             : null}

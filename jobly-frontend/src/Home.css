@@ -1,4 +1,12 @@
 .Home {
+  height: 100vh;
   padding-top: 20vh;
   text-align: center;
+  color: white;
 }
+
+/* .card, .card-body {
+  border: solid white !important;
+  border-radius: 3% !important;
+} */
+

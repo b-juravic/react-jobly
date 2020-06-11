@@ -10,6 +10,7 @@ import decode from "jwt-decode";
 // TODO: Need loading component and add to all components that load data
 // TODO: Need not found component- if user navigates to noexistent path
 // TODO: Need Handle errors
+// TODO: consider passing these as props: loginUser, logoutUser, registerUser since used in very specific places
 
 /**
  * Renders Navigation and Routes, wrapped with provider for UserData Context.
@@ -33,13 +34,12 @@ import decode from "jwt-decode";
  */
 function App() {
   let tokenVal = localStorage._joblyToken || null;
-  const [token, setToken] = useState(tokenVal);
-
   const USER_INITIAL_STATE = {
-    _token: token,
+    _token: tokenVal,
     userInfo: {},
     loggedOut: true
   }
+
   const [loggedInUserData, setLoggedInUserData] = useState(USER_INITIAL_STATE);
 
   // login a user and store token in context & localStorage
@@ -83,7 +83,10 @@ function App() {
   // logout user, update state/context
   function logoutUser() {
     localStorage.clear();
-    setLoggedInUserData(USER_INITIAL_STATE);
+    setLoggedInUserData({
+      ...USER_INITIAL_STATE,
+      _token: null
+    })
   }
 
   // get user data from backend API and store in context
@@ -102,12 +105,12 @@ function App() {
     }
   }
 
-  // check for token and logged in user data
+  // fetch userData if token exists and we don't have user data
   useEffect(function checkForUser() {
-    if (token && loggedInUserData.userInfo.username === undefined) {
+    if (loggedInUserData._token && loggedInUserData.userInfo.username === undefined) {
       getUserData();
     }
-  })
+  }, [loggedInUserData._token, loggedInUserData.userInfo.username])
 
   return (
     <UserDataContext.Provider value={{ loggedInUserData, loginUser, logoutUser, registerUser, getUserData }}>

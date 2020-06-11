@@ -11,7 +11,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: white;
+  background-size: cover;
+  background:
+  /* top, color */
+  linear-gradient(
+    rgb(0, 84, 147, .92),
+    rgb(0, 84, 147, .92)
+  ),
+  /* bottom, image */
+  url(connections-image.png);
 }
 
 code {
