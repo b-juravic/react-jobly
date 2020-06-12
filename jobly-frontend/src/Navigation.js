@@ -15,7 +15,7 @@ function Navigation() {
   const { loggedInUserData, logoutUser } = useContext(UserDataContext);
 
   return (
-    <nav className="Navigation navbar navbar-expand-md">
+    <nav className="Navigation navbar navbar-expand-md fixed-top">
       <NavLink className="navbar-brand" exact to="/">
       Jobly
       </NavLink>
