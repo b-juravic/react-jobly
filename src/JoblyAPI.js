@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const BASE_URL = "https://backendjobly.herokuapp.com/";
+
 /**
  * Functions for backend enpoint requests.
  */
@@ -12,7 +14,7 @@ class JoblyApi {
     try {
       return (await axios({
         method: verb,
-        url: `http://localhost:3001/${endpoint}`,
+        url: `${BASE_URL}${endpoint}`,
         [verb === "get" ? "params" : "data"]: paramsOrData
       })).data;
       // axios sends query string data via the "params" key,
