@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import UserDataContext from "./UserDataContext";
 import "./Home.css";
 import capitalize from "lodash.capitalize";
+import ScrollToTopOnMount from "./ScrollToTopOnMount";
 
 /**
  * Renders home page with welcome message if user logged in or log in link if not.
+ * Scrolls to top of page on mount.
  *
  * Connects to context to access userData to determine if user authenticated.
  * -- loggedInUserData.loggedOut: boolean
@@ -18,6 +20,7 @@ function Home() {
 
   return (
     <div className="Home">
+      <ScrollToTopOnMount />
       <h1 className="display-2">Jobly</h1>
       <p className="lead">All the jobs in one, convenient place.</p>
       {!loggedInUserData.loggedOut

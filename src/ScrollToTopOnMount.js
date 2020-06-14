@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 /**
  * Used for components where scrolling back to top of page necessary.
  *
- * App -> Routes -> PrivateRoute -> [Companies, Company, Jobs] -> ScrollToTop
+ * App -> Routes -> PrivateRoute -> [Companies, Company, Jobs, Home, Profile] -> ScrollToTop
  */
 function ScrollToTopOnMount() {
 
