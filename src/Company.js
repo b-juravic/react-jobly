@@ -4,9 +4,11 @@ import JoblyApi from "./JoblyAPI";
 import JobCard from "./JobCard";
 import "./Company.css";
 import UserDataContext from "./UserDataContext";
+import ScrollToTopOnMount from "./ScrollToTopOnMount";
 
 /**
- * Renders detail about a specific company including JobCards for each available job.
+ * Renders detail about a specific company including JobCards for each available job. Scrolls to top of page on mount.
+ *
  * State
  * -- company {name: "", description: "", jobs: [{id: "", title: "", salary: num, equity: num}...]}
  *
@@ -36,6 +38,7 @@ function Company() {
 
   return (
     <div className="Company col-md-8 offset-md-2">
+      <ScrollToTopOnMount />
       <h5>{name}</h5>
       <p>{description}</p>
       <ul>

@@ -3,9 +3,10 @@ import JoblyApi from "./JoblyAPI";
 import CompanyCard from "./CompanyCard";
 import Search from "./Search";
 import "./Companies.css";
+import ScrollToTopOnMount from "./ScrollToTopOnMount";
 
 /**
- * Renders a list of CompanyCards for all companies and a Search to filter companies
+ * Renders a list of CompanyCards for all companies and a Search to filter companies. Scrolls to top of page on mount.
  * State
  * -- companies: [{handle: "", name: "", description: "", photo_url: ""}, {}, ...]
  * -- searchTerm: ""
@@ -34,6 +35,7 @@ function Companies() {
 
   return (
     <div className="Companies col-md-8 offset-md-2">
+      <ScrollToTopOnMount />
       <Search filter={filterCompanies} />
       <ul className="Companies-container">
         {companies.map(({ handle, name, description, logo_url }) => (

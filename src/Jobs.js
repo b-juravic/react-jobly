@@ -4,9 +4,12 @@ import Search from "./Search";
 import JoblyApi from "./JoblyAPI";
 import "./Jobs.css";
 import UserDataContext from "./UserDataContext";
+import ScrollToTopOnMount from "./ScrollToTopOnMount";
 
 /**
- * Renders a list of JobCards for all jobs and a Search to filter jobs
+ * Renders a list of JobCards for all jobs and a Search to filter jobs.
+ * Scrolls to top of page on mount.
+ *
  * State
  * -- jobs: [{id: num, title: "", company_handle: "", salary: num, equity: num}, {}, ...]
  * -- searchTerm: ""
@@ -42,6 +45,7 @@ function Jobs() {
 
   return (
     <div className="Jobs col-md-8 offset-md-2">
+      <ScrollToTopOnMount />
       <Search filter={filterJobs} />
       <ul className="Jobs-container">
         {jobs.map(job => (
