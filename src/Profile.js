@@ -1,12 +1,13 @@
 import React, { useState, useContext } from "react";
 import UserDataContext from "./UserDataContext";
 import JoblyApi from "./JoblyAPI";
+import ScrollToTopOnMount from "./ScrollToTopOnMount";
 
 // TODO: Prevent form submission if password blank- other FE form validation?
 // TODO: Need to map over error messages - right now showing single message, but array returned from BE
 
 /**
- * Renders user Profile with a form allowing for edits.
+ * Renders user Profile with a form allowing for edits. Scrolls to top of page on mount.
  *
  * Connects to context
  * -- loggedInUserData { _token: "", userInfo: {}, loggedOut: boolean}
@@ -64,6 +65,7 @@ function Profile() {
 
   return (
     <div className="Profile container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+      <ScrollToTopOnMount />
       <h3 className="text-white">Profile</h3>
       {userMessages?.messages
             ? displayUserMessages()
