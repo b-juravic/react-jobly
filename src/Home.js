@@ -14,25 +14,44 @@ import ScrollToTopOnMount from "./ScrollToTopOnMount";
  *
  * App -> Routes -> Home
  */
+
 function Home() {
   const { loggedInUserData } = useContext(UserDataContext);
   const firstName = capitalize(loggedInUserData.userInfo.first_name);
 
+  const welcomeMessage = loggedInUserData.loggedOut
+    ? "All the jobs in one, convenient place."
+    : `Welcome Back, ${firstName}!`;
+
   return (
     <div className="Home">
       <ScrollToTopOnMount />
-      <h1 className="display-2">Jobly</h1>
-      <p className="lead">All the jobs in one, convenient place.</p>
-      {!loggedInUserData.loggedOut
-        ? <h2>Welcome Back, {firstName}!</h2>
-        : <Link
-            className="btn btn-primary btn-md font-weight-bold"
+      <svg className="svg-container" viewBox="205 0 493.5 380.8" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <ellipse transform="rotate(90 7.7 71)" cx="127.1" cy="-168.1" rx="189.4" ry="245.7" fill="#FF7400" stroke="#FF7400" strokeWidth="2.1" />
+        <text
+          className="intro"
+          x="215"
+          y="180"
+          fill="#FFF">
+          Jobly</text>
+        <text
+          className="welcome-msg"
+          x="215"
+          y="230"
+          fill="#FFF">
+          {welcomeMessage}</text>
+      </svg>
+      {loggedInUserData.loggedOut
+        ? <div className="btn-container">
+          <Link
+            className="btn register-login"
             to="/login">
-          Log In
-          </Link>}
+            Sign-Up <span>|</span> Login
+        </Link>
+        </div>
+        : null}
     </div>
   );
 }
 
 export default Home;
-

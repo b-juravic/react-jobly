@@ -1,21 +1,91 @@
-nav {
-  background-color: white;
-  color: #0091ff;
-  border-bottom: 1px solid #d9d9d9;
-}
-
-nav a {
-  text-decoration: none;
-  padding-left: 1%;
-  padding-right: 1%;
-}
-
-nav a:visited {
-  color: #0091ff;
-}
-
 nav a:hover {
   text-decoration: none;
-  color: #005493
+  color: #FFF;
 }
 
+/*
+ * Responsive navigation using progressive enhancement approach for cross-browser compatability
+ * Uses flexbox when supported
+ * .navigation, .nav-item, .nav-brand
+ */
+
+ .Navigation {
+  padding: .5rem 1rem;
+  text-align: right;
+}
+
+.nav-item-link{
+  text-decoration: none;
+  font-size: .8rem;
+  padding: 0 .5rem;
+  letter-spacing: 2px;
+  color: #FF7400;
+}
+
+.nav-brand {
+  display: inline-block;
+  background-color: #FF7400;
+  color: #FFF;
+  padding: .55rem 0;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* If browser supports display: flex, render these properties */
+@supports (display: flex) {
+  .Navigation {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .nav-item-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Updates for larger devices */
+
+@media screen and (min-width:576px) {
+  .nav-item {
+    font-size: 1rem;
+  }
+
+  .nav-brand {
+    height: 45px;
+    width:45px;
+    font-size: 1.3rem;
+  }
+
+  .btn-container {
+    padding-top: 20%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .nav-item-link {
+    font-size: 1.1rem;
+  }
+
+  .nav-brand {
+    height: 45px;
+    width:45px;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .nav-item-link {
+    font-size: 1.2rem;
+  }
+
+  .nav-brand {
+    height: 50px;
+    width: 50px;
+    font-size: 1.7rem;
+  }
+}

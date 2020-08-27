@@ -117,9 +117,7 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Navigation />
-          <div className="container-fluid">
-            <Routes />
-          </div>
+          <Routes />
         </BrowserRouter>
       </div>
     </UserDataContext.Provider>

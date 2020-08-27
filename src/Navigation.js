@@ -15,45 +15,25 @@ function Navigation() {
   const { loggedInUserData, logoutUser } = useContext(UserDataContext);
 
   return (
-    <nav className="Navigation navbar navbar-expand-md fixed-top">
-      <NavLink className="navbar-brand" exact to="/">
-      Jobly
-      </NavLink>
+    <nav className="Navigation">
       {loggedInUserData.loggedOut
-        ? <ul className="navbar-nav ml-auto">
-            <li>
-              <NavLink
-                className="nav-item"
-                exact to="/login">
-              Login
-              </NavLink>
-            </li>
-          </ul>
-        : <ul className="navbar-nav ml-auto">
-            <li>
-              <NavLink className="nav-item mr-4" exact to="/companies">
-              Companies
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="nav-item mr-4" exact to="/jobs">
-              Jobs
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="nav-item mr-4" exact to="/profile">
-              Profile
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className="nav-item mr-4"
-                exact to="/"
-                onClick={logoutUser}
-              >Logout
-              </NavLink>
-            </li>
-          </ul>}
+        ? <NavLink
+          className="nav-item-link"
+          exact to="/login">
+          LOGIN
+        </NavLink>
+        : <>
+          <NavLink className="nav-item-link" exact to="/companies">COMPANIES</NavLink>
+          <NavLink className="nav-item-link" exact to="/jobs">JOBS</NavLink>
+          <NavLink className="nav-item-link" exact to="/profile">PROFILE</NavLink>
+          <NavLink
+            className="nav-item-link"
+            exact to="/"
+            onClick={logoutUser}>
+            LOGOUT
+          </NavLink>
+          </>}
+      <NavLink className="nav-item-link nav-brand" exact to="/">J</NavLink>
     </nav>
   );
 }
