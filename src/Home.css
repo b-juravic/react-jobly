@@ -20,7 +20,7 @@
 
 .btn-container {
   text-align: center;
-  padding-top: 35%;
+  padding-top: 20%;
 }
 
 .btn.register-login {
@@ -39,6 +39,11 @@
 }
 
 /* Updates for larger devices and/or orientation specific */
+@media screen and (min-height: 568px) {
+  .btn-container {
+    padding-top: 35%;
+  }
+}
 
 @media screen and (max-height:598px) and (orientation: landscape) {
   .svg-container {
