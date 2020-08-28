@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import UserDataContext from "./UserDataContext";
 import JoblyApi from "./JoblyAPI";
 import ScrollToTopOnMount from "./ScrollToTopOnMount";
+import "./Profile.css";
 
 // TODO: Prevent form submission if password blank- other FE form validation?
 // TODO: Need to map over error messages - right now showing single message, but array returned from BE
@@ -44,7 +45,7 @@ function Profile() {
     evt.preventDefault();
     try {
       await JoblyApi.updateUser(profileFormData, username);
-      setUserMessages({ status: "success", messages: "Your profile was sucessfully updated" });
+      setUserMessages({ status: "success", messages: "Your profile was updated!" });
 
       // Update App state/context with user data changes
       getUserData();
@@ -57,28 +58,25 @@ function Profile() {
   function displayUserMessages() {
     return (
       <div
-        className={userMessages.status === "error" ? "alert alert-danger" : "alert alert-success"}>
+        className={userMessages.status === "error" ? "msg error" : "msg success"}>
         {userMessages.messages}
       </div>
     )
   }
 
   return (
-    <div className="Profile container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+    <div className="Profile profile-container">
       <ScrollToTopOnMount />
-      <h3 className="text-white">Profile</h3>
       {userMessages?.messages
             ? displayUserMessages()
             : null}
-      <div className="card">
-        <div className="card-body">
-          <form
-            className="Profile font-weight-bold"
-            onSubmit={handleSubmit}>
-            <div className="form-group">
+      <div className="card-container">
+        <div className="card-content">
+          <form onSubmit={handleSubmit}>
+            <div className="label-input-group">
               <label htmlFor="username">Username</label>
               <input
-                className="form-control-plaintext"
+                className="form-input read-only"
                 name="username"
                 id="username"
                 value={username}
@@ -86,40 +84,40 @@ function Profile() {
                 readOnly>
               </input>
             </div>
-            <div className="form-group">
+            <div className="label-input-group">
               <label htmlFor="firstName">First Name</label>
               <input
-                className="form-control"
+                className="form-input"
                 name="firstName"
                 id="firstName"
                 value={firstName}
                 onChange={handleChange}>
               </input>
             </div>
-            <div className="form-group">
+            <div className="label-input-group">
               <label htmlFor="lastName">Last Name</label>
               <input
-                className="form-control"
+                className="form-input"
                 name="lastName"
                 id="lastName"
                 value={lastName}
                 onChange={handleChange}>
               </input>
             </div>
-            <div className="form-group">
+            <div className="label-input-group">
               <label htmlFor="email">Email</label>
               <input
-                className="form-control"
+                className="form-input"
                 name="email"
                 id="email"
                 value={email}
                 onChange={handleChange}>
               </input>
             </div>
-            <div className="form-group">
+            <div className="label-input-group">
               <label htmlFor="password">Password</label>
               <input
-                className="form-control"
+                className="form-input"
                 type="password"
                 name="password"
                 id="password"
@@ -127,7 +125,7 @@ function Profile() {
                 onChange={handleChange}>
               </input>
             </div>
-            <button className="btn btn-primary">Save Changes</button>
+            <button className="button-save">Save Changes</button>
           </form>
         </div>
       </div>

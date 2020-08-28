@@ -6,7 +6,7 @@
 }
 
 .login-content {
-  width: 80%;
+  width: 90%;
   max-width: 650px;
   margin: 0 auto;
 }
@@ -63,13 +63,15 @@
   padding-bottom: 1rem;
 }
 
+/* Updates for larger devices */
+
 @media screen and (min-width: 568px) {
   .login-content {
-    width: 60%;
+    width: 70%;
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1024px) {
   .login-content {
     width: 45%;
   }

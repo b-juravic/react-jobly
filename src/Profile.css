@@ -1,0 +1,98 @@
+/* A mobile frist responsive design */
+
+.profile-container {
+  color: white;
+  width: 90%;
+  max-width: 650px;
+  margin: 0 auto;
+  margin-top: 4vh;
+}
+
+.card-container {
+  margin-top: .4rem;
+  margin-bottom: .4rem;
+  border-radius: 15px;
+  background-color: rgb(52, 48, 47, .4);
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.msg {
+  display: block;
+  width: 99%;
+  padding: .4rem .8rem;
+  border: 1.5px solid transparent;
+  border-radius: .4rem !important;
+  margin: 0 auto;
+  font-variant-caps: all-petite-caps;
+  font-size: 1.3rem;
+  letter-spacing: .38px;
+  color: #f4f1f1;
+}
+
+.msg.error {
+  background-color: #d04343;
+}
+
+.msg.success {
+  background-color: #367c36;
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+  padding: .4rem .8rem;
+  border: 1.5px solid transparent;
+  border-radius: .4rem !important;
+}
+
+.form-input:focus {
+  border-color: #70FFFF;
+  outline: 0;
+}
+
+.form-input.read-only {
+  background-color: #b7b1ae;
+}
+
+.form-input.form-input.read-only:focus {
+  border-color: transparent;
+  outline: 0;
+}
+
+.label-input-group {
+  padding-bottom: 1rem;
+}
+
+.button-save {
+  border-radius: 8px;
+  border-top-left-radius: 8px !important;
+  border-bottom-left-radius: 8px !important;
+  padding: .5rem;
+  border: 2px solid #00FFFF;
+  background-color: #00FFFF;
+  color: rgb(52, 48, 47);
+  outline-color: #A4FFFF !important;
+}
+
+/* Updates for larger devices */
+
+@media screen and (min-width: 568px) {
+  .profile-container {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 600px) and (orientation: portrait), (min-width: 768px) {
+  .profile-container {
+    margin-top: 10vh;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .profile-container {
+    width: 45%;
+  }
+}

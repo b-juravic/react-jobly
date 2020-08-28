@@ -67,7 +67,7 @@ function Login() {
   }
 
   return (
-    <div className="login-container">
+    <div className="Login login-container">
       <div className="login-content">
         <button
           name="login"
