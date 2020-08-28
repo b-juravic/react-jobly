@@ -1,20 +1,76 @@
-form {
-  color: black;
+/* A mobile frist responsive design */
+
+.login-container {
+  margin-top: 10vh;
+  color: white;
 }
 
-.btn-login {
-  border-bottom-right-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  border-top-left-radius: .25rem !important;
+.login-content {
+  width: 80%;
+  max-width: 650px;
+  margin: 0 auto;
 }
 
-.btn-signup {
-  border-bottom-left-radius: 0 !important;
-  border-top-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
+.button-submit, .button-login, .button-signup {
+  border-radius: 8px;
+  border-top-left-radius: 8px !important;
+  border-bottom-left-radius: 8px !important;
+  padding: .5rem;
 }
 
-.btn-submit {
-  border-bottom-left-radius: .25rem !important;
-  border-top-left-radius: .25rem !important;
+.button-login, .button-signup {
+  border: 2px solid whitesmoke;
+  margin-left: 2px;
+  outline-color: rgb(52, 48, 47, .7) !important
+}
+
+.button-signup {
+  margin-left: 5px;
+}
+
+.button-submit {
+  border: 2px solid #00FFFF;
+  background-color: #00FFFF;
+  color: rgb(52, 48, 47);
+  outline-color: #A4FFFF !important;
+}
+
+.card-container {
+  margin-top: .4rem;
+  margin-bottom: .4rem;
+  border-radius: 15px;
+  background-color: rgb(52, 48, 47, .4);
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+  padding: .4rem .8rem;
+  border: 1.5px solid transparent;
+  border-radius: .4rem !important;
+}
+
+.form-input:focus {
+  border-color: #70FFFF;
+  outline: 0;
+}
+
+.label-input-group {
+  padding-bottom: 1rem;
+}
+
+@media screen and (min-width: 568px) {
+  .login-content {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .login-content {
+    width: 45%;
+  }
 }

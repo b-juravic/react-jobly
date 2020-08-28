@@ -42,30 +42,3 @@ function Navigation() {
 }
 
 export default Navigation;
-
-
-
-
-// return (
-//   <nav className="Navigation">
-//     <span><NavLink className="nav-item-link nav-brand small-devices" exact to="/">J</NavLink></span>
-//     {loggedInUserData.loggedOut
-//       ? <span><NavLink
-//         className="nav-item-link"
-//         exact to="/login">
-//         LOGIN
-//         </NavLink></span>
-//       : <>
-//       <span><NavLink className="nav-item-link" exact to="/companies">COMPANIES</NavLink>
-//         <NavLink className="nav-item-link" exact to="/jobs">JOBS</NavLink>
-//         <NavLink className="nav-item-link" exact to="/profile">PROFILE</NavLink>
-//         <NavLink
-//           className="nav-item-link"
-//           exact to="/"
-//           onClick={logoutUser}>
-//           LOGOUT
-//             </NavLink></span>
-//       </>}
-//     <span><NavLink className="nav-item-link nav-brand large-devices" exact to="/">J</NavLink></span>
-//   </nav>
-// );
