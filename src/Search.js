@@ -25,16 +25,16 @@ function Search({ filter }) {
 
   return (
     <div className="Search">
-      <form className="form-inline" onSubmit={handleSubmit}>
-        <label className="sr-only" htmlFor="search"></label>
-        <input className="form-control form-control-lg flex-grow-1" type="text"
+      <form className="search-form" onSubmit={handleSubmit}>
+        <label htmlFor="search"></label>
+        <input className="search-input" type="text"
           id="search"
           name="search"
           value={searchTerm}
           placeholder="Enter search term..."
           onChange={handleChange}
         />
-        <button className="btn btn-lg search-btn btn-info">Search</button>
+        <button className="button-search">Search</button>
       </form>
     </div>
   );

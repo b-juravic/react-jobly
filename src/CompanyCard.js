@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./Card.css";
 import defaultLogo from "./building.png";
 
-// TODO: research why logos don't render
 /**
  * Renders details about a single company as a link
  * Props from Companies

@@ -34,10 +34,10 @@ function Companies() {
   }, [searchTerm])
 
   return (
-    <div className="Companies col-md-8 offset-md-2">
+    <div className="Companies companies-container">
       <ScrollToTopOnMount />
       <Search filter={filterCompanies} />
-      <ul className="Companies-container">
+      <ul className="companies-content">
         {companies.map(({ handle, name, description, logo_url }) => (
           <CompanyCard
             key={handle}
