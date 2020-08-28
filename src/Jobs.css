@@ -1,14 +1,33 @@
-.Jobs {
-  padding-top: .4vh;
+/* A mobile frist responsive design */
+
+.jobs-container {
+  width: 90%;
+  max-width: 750px;
+  margin: 0 auto;
+  margin-top: 1rem;
 }
 
-.Jobs-container {
-  padding-top: 1vh;
-  margin-bottom: 3vh;
-  text-align: center;
+.jobs-content {
+  padding: 0;
+  margin-bottom: 1rem;
 }
 
-button {
-  border-bottom-left-radius: .25rem !important;
-  border-top-left-radius: .25rem !important;
+/* Updates for larger devices */
+
+@media screen and (min-width: 568px) {
+  .jobs-container {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 600px) and (orientation: portrait), (min-width: 768px) {
+  .jobs-container {
+    margin-top: 5vh;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .jobs-container {
+    width: 55%;
+  }
 }
