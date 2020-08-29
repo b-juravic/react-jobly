@@ -1,9 +1,33 @@
-.Companies {
-  padding-top: .4vh;
+/* A mobile frist responsive design */
+
+.companies-container {
+  width: 90%;
+  max-width: 750px;
+  margin: 0 auto;
+  margin-top: 1rem;
 }
 
-.Companies-container {
-  padding-top: 1vh;
-  margin-bottom: 3vh;
-  text-align: center;
+.companies-content {
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+/* Updates for larger devices */
+
+@media screen and (min-width: 568px) {
+  .companies-container {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 600px) and (orientation: portrait), (min-width: 768px) {
+  .companies-container {
+    margin-top: 5vh;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .companies-container {
+    width: 55%;
+  }
 }

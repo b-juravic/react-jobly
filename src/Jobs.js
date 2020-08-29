@@ -44,10 +44,10 @@ function Jobs() {
   }, [searchTerm])
 
   return (
-    <div className="Jobs col-md-8 offset-md-2">
+    <div className="Jobs jobs-container">
       <ScrollToTopOnMount />
       <Search filter={filterJobs} />
-      <ul className="Jobs-container">
+      <ul className="jobs-content">
         {jobs.map(job => (
           <JobCard
             key={job.id}

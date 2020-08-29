@@ -67,85 +67,87 @@ function Login() {
   }
 
   return (
-    <div className="Login container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-      <button
-        name="login"
-        type="button"
-        className="btn btn btn-login btn-primary"
-        onClick={displayLoginOrSignUp}>
-        Login
+    <div className="Login login-container">
+      <div className="login-content">
+        <button
+          name="login"
+          type="button"
+          className="button-login"
+          onClick={displayLoginOrSignUp}>
+          Login
       </button>
-      <button
-        name="signUp"
-        type="button"
-        className="btn btn-secondary btn-signup"
-        onClick={displayLoginOrSignUp}>
-        Sign Up
+        <button
+          name="signUp"
+          type="button"
+          className="button-signup"
+          onClick={displayLoginOrSignUp}>
+          Sign Up
       </button>
-      <div className="card mt-0">
-        <div className="card-body">
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="username">Username</label>
-              <input
-                className="form-control"
-                type="text"
-                id="username"
-                name="username"
-                value={formData.username}
-                onChange={handleChange}>
-              </input>
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input
-                className="form-control"
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}>
-              </input>
-            </div>
-            {/* signUp fields only render if signUp state === true*/}
-            {signUp ?
-              <div id="sign-up">
-                <div className="form-group">
-                  <label htmlFor="firstName">First Name</label>
-                  <input type="text"
-                    className="form-control"
-                    id="firstName"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}>
-                  </input>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="lastName">Last Name</label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}>
-                  </input>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}>
-                  </input>
-                </div>
+        <div className="login-card-container">
+          <div className="login-card-content">
+            <form onSubmit={handleSubmit}>
+              <div className="label-input-group">
+                <label htmlFor="username">Username</label>
+                <input
+                  className="form-input"
+                  type="text"
+                  id="username"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleChange}>
+                </input>
               </div>
-              : null}
-            <button className="btn btn-primary btn-submit">Submit</button>
-          </form>
+              <div className="label-input-group">
+                <label htmlFor="password">Password</label>
+                <input
+                  className="form-input"
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}>
+                </input>
+              </div>
+              {/* signUp fields only render if signUp state === true*/}
+              {signUp ?
+                <div id="sign-up">
+                  <div className="label-input-group">
+                    <label htmlFor="firstName">First Name</label>
+                    <input type="text"
+                      className="form-input"
+                      id="firstName"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}>
+                    </input>
+                  </div>
+                  <div className="label-input-group">
+                    <label htmlFor="lastName">Last Name</label>
+                    <input
+                      className="form-input"
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}>
+                    </input>
+                  </div>
+                  <div className="label-input-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                      className="form-input"
+                      type="text"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}>
+                    </input>
+                  </div>
+                </div>
+                : null}
+              <button className="button-submit">Submit</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

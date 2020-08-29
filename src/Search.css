@@ -1,11 +1,34 @@
-input {
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
+/* A mobile frist responsive design */
+
+.search-form {
+  width: 100%;
+  padding: .8rem 0;
+  display: inline-block;
 }
 
-.search-btn {
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-  /* background-color: #005493 !important;
-  color: white !important; */
+.search-input {
+  width: calc(100% - 99px);
+  padding: .4rem .8rem;
+  border: 1.5px solid transparent;
+  border-radius: .4rem !important;
+  margin: 0 .4rem;
+  line-height: 1.8rem;
+}
+
+.search-input:focus {
+  border-color: #70FFFF;
+  outline: 0;
+}
+
+.button-search {
+  width: 70px;
+  display: inline-block;
+  border-radius: 8px;
+  border-top-left-radius: 8px !important;
+  border-bottom-left-radius: 8px !important;
+  padding: .5rem;
+  border: 2px solid #00FFFF;
+  background-color: #00FFFF;
+  color: rgb(52, 48, 47);
+  outline-color: #A4FFFF !important;
 }

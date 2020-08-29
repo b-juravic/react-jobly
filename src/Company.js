@@ -37,11 +37,11 @@ function Company() {
   const { name, description, jobs } = company;
 
   return (
-    <div className="Company col-md-8 offset-md-2">
+    <div className="Company company-container">
       <ScrollToTopOnMount />
-      <h5>{name}</h5>
-      <p>{description}</p>
-      <ul>
+      <h5 className="company-name">{name}</h5>
+      <p className="company-description">{description}</p>
+      <ul className="company-jobs">
         {jobs.map(job => (
           <JobCard
             key={job.id}

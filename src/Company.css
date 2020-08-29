@@ -1,4 +1,39 @@
-.Company {
-  margin-top: .4vh;
-  color: white;
+/* A mobile frist responsive design */
+
+.company-container {
+  width: 90%;
+  max-width: 750px;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+.company-name, .company-description {
+  padding-left: .4rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 5px rgb(52, 48, 47);
+}
+
+.company-jobs {
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+/* Updates for larger devices */
+
+@media screen and (min-width: 568px) {
+  .company-container {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 600px) and (orientation: portrait), (min-width: 768px) {
+  .company-container {
+    margin-top: 5vh;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .company-container {
+    width: 55%;
+  }
 }
