@@ -1,0 +1,33 @@
+.card-content {
+  list-style: none;
+  background-color: #f7f7f7;
+  margin-top: 3vh;
+  border-radius: .4rem;
+}
+
+.card-link {
+  color: #404040;
+  text-decoration: none;
+}
+
+.card-content a:hover{
+  text-decoration: none;
+  color: #234790;
+}
+
+.name {
+  margin-top: .4rem;
+}
+
+.logo {
+  width:50px;
+  height: 50px;
+  border-radius: 50%;
+  float: right;
+  position: relative;
+  bottom: 8px;
+}
+
+.description {
+  clear: right;
+}

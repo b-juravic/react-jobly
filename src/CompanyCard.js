@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom";
-import "./Card.css";
+import "./CompanyCard.css";
 import defaultLogo from "./building.png";
 
 /**
@@ -16,13 +16,11 @@ import defaultLogo from "./building.png";
 function CompanyCard({ handle, name, description, logoUrl }) {
 
   return (
-    <li className="CompanyCard card">
-      <Link className="card-body" to={`companies/${handle}`}>
-        <h6 className="card-title d-flex justify-content-between">
-          <span>{name}</span>
-          <img src={logoUrl || defaultLogo} alt="logo" />
-        </h6>
-        <p className="card-text">{description}</p>
+    <li className="CompanyCard card-content">
+      <Link className="card-link" to={`companies/${handle}`}>
+        <img className="logo" src={logoUrl || defaultLogo} alt="logo" />
+        <h6 className="name">{name}</h6>
+        <p className="description">{description}</p>
       </Link>
     </li>
   );
