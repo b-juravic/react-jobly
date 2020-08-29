@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import UserDataContext from "./UserDataContext";
 import JoblyApi from "./JoblyAPI";
+import "./JobCard.css";
 
 /**
  * Renders details about a single job with Apply button for users to apply to job.
@@ -28,19 +29,19 @@ function JobCard({ id, title, salary, equity, applied }) {
   }
 
   return (
-    <li className="JobCard card">
-      <div className="card-body">
-        <h6 className="card-title">{title}</h6>
+    <li className="JobCard job-container">
+      <div className="job-content">
+        <h6>{title}</h6>
         <div>Salary: ${salary}</div>
         <div>Equity: {equity}</div>
         {applied
           ? <button
-              className="btn btn-md btn-danger float-right font-weight-bold text-uppercase"
+              className="button-apply applied"
               disabled
             >Applied
             </button>
           : <button
-              className="btn btn-md btn-danger float-right font-weight-bold text-uppercase"
+              className="button-apply"
               onClick={handleApply}
             >Apply
             </button>}

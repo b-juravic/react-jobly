@@ -83,8 +83,8 @@ function Login() {
           onClick={displayLoginOrSignUp}>
           Sign Up
       </button>
-        <div className="card-container">
-          <div className="card-content">
+        <div className="login-card-container">
+          <div className="login-card-content">
             <form onSubmit={handleSubmit}>
               <div className="label-input-group">
                 <label htmlFor="username">Username</label>

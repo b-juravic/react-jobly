@@ -16,7 +16,7 @@ import defaultLogo from "./building.png";
 function CompanyCard({ handle, name, description, logoUrl }) {
 
   return (
-    <li className="CompanyCard card-content">
+    <li className="CompanyCard company-card-content">
       <Link className="card-link" to={`companies/${handle}`}>
         <img className="logo" src={logoUrl || defaultLogo} alt="logo" />
         <h6 className="name">{name}</h6>

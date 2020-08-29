@@ -70,8 +70,8 @@ function Profile() {
       {userMessages?.messages
             ? displayUserMessages()
             : null}
-      <div className="card-container">
-        <div className="card-content">
+      <div className="profile-card-container">
+        <div className="profile-card-content">
           <form onSubmit={handleSubmit}>
             <div className="label-input-group">
               <label htmlFor="username">Username</label>

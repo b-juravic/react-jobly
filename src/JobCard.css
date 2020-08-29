@@ -1,0 +1,38 @@
+.job-container {
+  list-style: none;
+  background-color: #f7f7f7;
+  margin-top: 3vh;
+  border-radius: .4rem;
+}
+
+.job-content {
+  padding: 1.7rem 1rem;
+}
+
+.button-apply {
+  width: 90px;
+  border-radius: 8px;
+  border-top-left-radius: 8px !important;
+  border-bottom-left-radius: 8px !important;
+  padding: .5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: .5px;
+  color: white;
+  font-variant-caps: all-petite-caps;
+  float: right;
+  position: relative;
+  bottom: 2.2rem;
+  outline-color: #433e3d !important;
+  border: 2px solid #433e3d;
+  background-color: #433e3d;
+}
+
+.button-apply:hover {
+  background-color: #504a49;
+}
+
+.button-apply.applied {
+  border: 2px solid #b6b0af;
+  background-color: #b6b0af;
+}

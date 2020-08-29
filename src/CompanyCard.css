@@ -1,8 +1,10 @@
-.card-content {
+.company-card-content {
   list-style: none;
   background-color: #f7f7f7;
   margin-top: 3vh;
   border-radius: .4rem;
+
+  padding: 1rem 1rem;
 }
 
 .card-link {
@@ -10,13 +12,14 @@
   text-decoration: none;
 }
 
-.card-content a:hover{
+.company-card-content a:hover{
   text-decoration: none;
   color: #234790;
 }
 
 .name {
   margin-top: .4rem;
+  font-weight: 600;
 }
 
 .logo {

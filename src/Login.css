@@ -35,14 +35,14 @@
   outline-color: #A4FFFF !important;
 }
 
-.card-container {
+.login-card-container {
   margin-top: .4rem;
   margin-bottom: .4rem;
   border-radius: 15px;
   background-color: rgb(52, 48, 47, .4);
 }
 
-.card-content {
+.login-card-content {
   padding: 1rem;
 }
 
