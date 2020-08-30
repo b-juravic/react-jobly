@@ -13,15 +13,15 @@
 
 .button-submit, .button-login, .button-signup {
   border-radius: 8px;
-  border-top-left-radius: 8px !important;
-  border-bottom-left-radius: 8px !important;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
   padding: .5rem;
 }
 
 .button-login, .button-signup {
   border: 2px solid whitesmoke;
   margin-left: 2px;
-  outline-color: rgb(52, 48, 47, .7) !important
+  outline-color: rgb(52, 48, 47, .7);
 }
 
 .button-signup {
@@ -32,7 +32,7 @@
   border: 2px solid #00FFFF;
   background-color: #00FFFF;
   color: rgb(52, 48, 47);
-  outline-color: #A4FFFF !important;
+  outline-color: #A4FFFF;
 }
 
 .login-card-container {
@@ -46,12 +46,17 @@
   padding: 1rem;
 }
 
+.form-label {
+  display: block;
+  margin-bottom: .5rem;
+}
+
 .form-input {
   display: block;
   width: 100%;
   padding: .4rem .8rem;
   border: 1.5px solid transparent;
-  border-radius: .4rem !important;
+  border-radius: .4rem;
 }
 
 .form-input:focus {

@@ -42,9 +42,9 @@ function Home() {
           {welcomeMessage}</text>
       </svg>
       {loggedInUserData.loggedOut
-        ? <div className="btn-container">
+        ? <div id="btn-login-container" className="btn-container">
           <Link
-            className="btn register-login"
+            className="btn-register-login"
             to="/login">
             Sign-Up <span>|</span> Login
         </Link>

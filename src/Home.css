@@ -25,8 +25,9 @@
   padding-top: 20%;
 }
 
-.btn.register-login {
+.btn-register-login {
   margin-left: .3%;
+  padding: .7rem 2.5rem;
   border: 1px solid white;
   border-radius: 25px;
   width: 250px;
@@ -34,9 +35,10 @@
   background-color: white;
   font-size: 1.5rem;
   color: #2F3135;
+  text-decoration: none;
 }
 
-.btn.register-login span{
+.btn-register-login span{
   color: #FF7400;
 }
 
@@ -52,8 +54,9 @@
     max-width: 40vw;
     padding-top: 0;
   }
-  .btn-container {
-    padding-top: 0 !important;
+
+  #btn-login-container {
+    padding-top: 0;
   }
 }
 
@@ -63,8 +66,8 @@
     padding-top: 0;
   }
 
-  .btn-container {
-    padding-top: 15% !important;
+  #btn-login-container {
+    padding-top: 15%;
   }
 }
 
@@ -83,13 +86,13 @@
 }
 
 @media screen and (min-width: 1024px) and (max-height: 1023px) and (orientation: landscape) {
-  .btn-container {
-    padding-top: 2% !important;
+  #btn-login-container {
+    padding-top: 2%;
   }
 }
 
 @media screen and (min-width: 1024px) and (min-height: 1024px) and (orientation: landscape) {
-  .btn-container {
-    padding-top: 10% !important;
+  #btn-login-container {
+    padding-top: 10%;
   }
 }

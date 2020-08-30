@@ -87,7 +87,7 @@ function Login() {
           <div className="login-card-content">
             <form onSubmit={handleSubmit}>
               <div className="label-input-group">
-                <label htmlFor="username">Username</label>
+                <label className="form-label" htmlFor="username">Username</label>
                 <input
                   className="form-input"
                   type="text"
@@ -98,7 +98,7 @@ function Login() {
                 </input>
               </div>
               <div className="label-input-group">
-                <label htmlFor="password">Password</label>
+                <label className="form-label" htmlFor="password">Password</label>
                 <input
                   className="form-input"
                   type="password"
@@ -112,7 +112,7 @@ function Login() {
               {signUp ?
                 <div id="sign-up">
                   <div className="label-input-group">
-                    <label htmlFor="firstName">First Name</label>
+                    <label className="form-label" htmlFor="firstName">First Name</label>
                     <input type="text"
                       className="form-input"
                       id="firstName"
@@ -122,7 +122,7 @@ function Login() {
                     </input>
                   </div>
                   <div className="label-input-group">
-                    <label htmlFor="lastName">Last Name</label>
+                    <label className="form-label" htmlFor="lastName">Last Name</label>
                     <input
                       className="form-input"
                       type="text"
@@ -133,7 +133,7 @@ function Login() {
                     </input>
                   </div>
                   <div className="label-input-group">
-                    <label htmlFor="email">Email</label>
+                    <label className="form-label" htmlFor="email">Email</label>
                     <input
                       className="form-input"
                       type="text"

@@ -13,6 +13,16 @@
   text-shadow: 2px 2px 5px rgb(52, 48, 47);
 }
 
+.company-name {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
+
+.company-description {
+  margin-top: .3rem;
+  line-height: 1.5;
+}
+
 .company-jobs {
   padding: 0;
   margin-bottom: 1rem;
