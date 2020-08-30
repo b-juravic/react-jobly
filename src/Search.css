@@ -10,7 +10,7 @@
   width: calc(100% - 99px);
   padding: .4rem .8rem;
   border: 1.5px solid transparent;
-  border-radius: .4rem !important;
+  border-radius: .4rem;
   margin: 0 .4rem;
   line-height: 1.8rem;
 }
@@ -24,11 +24,11 @@
   width: 70px;
   display: inline-block;
   border-radius: 8px;
-  border-top-left-radius: 8px !important;
-  border-bottom-left-radius: 8px !important;
-  padding: .5rem;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding: .7rem .5rem;
   border: 2px solid #00FFFF;
   background-color: #00FFFF;
   color: rgb(52, 48, 47);
-  outline-color: #A4FFFF !important;
+  outline-color: #A4FFFF;
 }

@@ -24,7 +24,7 @@
   width: 99%;
   padding: .4rem .8rem;
   border: 1.5px solid transparent;
-  border-radius: .4rem !important;
+  border-radius: .4rem;
   margin: 0 auto;
   font-variant-caps: all-petite-caps;
   font-size: 1.3rem;
@@ -40,12 +40,17 @@
   background-color: #367c36;
 }
 
+.form-label {
+  display: block;
+  margin-bottom: .5rem;
+}
+
 .form-input {
   display: block;
   width: 100%;
   padding: .4rem .8rem;
   border: 1.5px solid transparent;
-  border-radius: .4rem !important;
+  border-radius: .4rem;
 }
 
 .form-input:focus {
@@ -68,13 +73,13 @@
 
 .button-save {
   border-radius: 8px;
-  border-top-left-radius: 8px !important;
-  border-bottom-left-radius: 8px !important;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
   padding: .5rem;
   border: 2px solid #00FFFF;
   background-color: #00FFFF;
   color: rgb(52, 48, 47);
-  outline-color: #A4FFFF !important;
+  outline-color: #A4FFFF;
 }
 
 /* Updates for larger devices */

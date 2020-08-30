@@ -19,7 +19,10 @@
 
 .name {
   margin-top: .4rem;
+  margin-bottom: .5rem;
   font-weight: 600;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .logo {
@@ -33,4 +36,5 @@
 
 .description {
   clear: right;
+  line-height: 1.5;
 }

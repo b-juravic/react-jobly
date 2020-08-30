@@ -7,13 +7,21 @@
 
 .job-content {
   padding: 1.7rem 1rem;
+  color: rgb(52, 48, 47);
+}
+
+.job-title {
+  margin-top: 0;
+  margin-bottom: .5rem;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .button-apply {
   width: 90px;
   border-radius: 8px;
-  border-top-left-radius: 8px !important;
-  border-bottom-left-radius: 8px !important;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
   padding: .5rem;
   font-size: 1.2rem;
   font-weight: 600;
@@ -23,7 +31,7 @@
   float: right;
   position: relative;
   bottom: 2.2rem;
-  outline-color: #433e3d !important;
+  outline-color: #433e3d;
   border: 2px solid #433e3d;
   background-color: #433e3d;
 }

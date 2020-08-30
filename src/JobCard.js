@@ -31,7 +31,7 @@ function JobCard({ id, title, salary, equity, applied }) {
   return (
     <li className="JobCard job-container">
       <div className="job-content">
-        <h6>{title}</h6>
+        <h6 className= "job-title">{title}</h6>
         <div>Salary: ${salary}</div>
         <div>Equity: {equity}</div>
         {applied
