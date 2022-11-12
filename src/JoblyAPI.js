@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://backendjobly.herokuapp.com/";
+const BASE_URL = "https://jobly-backend.onrender.com/";
 
 /**
  * Functions for backend enpoint requests.
